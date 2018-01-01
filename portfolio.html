@@ -1,0 +1,33 @@
+---
+title: Portfolio
+heading: Our books
+subtitle: The finest in fantasy and genre fiction, plus a few surprises.
+---
+
+<section class="diagonal ">
+	<div class="container">
+			{% assign unique_tags = '' | split: '' %}
+			{% assign serieses = site.data.processed_books | group_by: "series" | sort: "title" | reverse %}
+			{% for series in serieses  %}
+			<ul class="image-grid">
+				{% for book in series.items %}
+					{% unless unique_tags contains book.title %}
+						<li>
+							<a href="{{site.base_url}}{{ book.title | datapage_url: '/books'}}">
+								<img src="{% include relative-src.html src=book.image_path %}" class="thumb" alt="{{ book.title }}">
+							</a>
+							<p class= "small-white">
+								<b>{{ book.title }}</b><br/>
+								{{ book.author }}<br/>
+								{{ book.isbn }}<br/>
+								{{ book.isbns  }}
+							</p>
+						</li>
+						{% assign unique_tags = unique_tags | push: book.title  %}
+					{% endunless %}
+				{% endfor %}
+				<li class="filler"></li>
+			</ul>
+			{% endfor %}
+	</div>
+</section>
