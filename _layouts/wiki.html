@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content="Jekyll v{{ jekyll.version }}">
+		<title>Jeff Lint - Wikipedia, the free encyclopedia</title>
+
+		{% seo %}
+		{% feed_meta %}
+
+		{% if jekyll.environment == 'production' and site.google_analytics_key != '' %}
+			<script>
+				(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+
+				ga("create", "{{ site.google_analytics_key }}", "auto");
+				ga("send", "pageview");
+			</script>
+		{% endif %}
+
+		<!-- Twitter cards -->
+		<meta name="twitter:site"    content="@{{ site.twitter_username }}">
+		<meta name="twitter:creator" content="@{{ page.author }}">
+		<meta name="twitter:title"   content="{{ page.title }}">
+
+		{% if page.title %}
+		<meta name="twitter:description" content="{{ page.title }}">
+		{% else %}
+		<meta name="twitter:description" content="{{ site.description }}">
+		{% endif %}
+
+		{% if page.image_path %}
+		<meta name="twitter:card"  content="summary_large_image">
+		<meta name="twitter:image" content="{{ page.image_path }}">
+		{% else %}
+		<meta name="twitter:card"  content="summary">
+		<meta name="twitter:image" content="{{ site.title_image }}">
+		{% endif %}
+		<!-- end of Twitter cards -->
+		<style>
+
+		body {
+			background: #f9f9f9;
+			margin: 0;
+			padding 0;
+			font-family: Arial;
+			font-size: 80%;
+			}
+
+		#leftcolumn {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			float: left;
+			width: 154px;
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+			border: 0;
+			}
+
+		#main  {
+			position: absolute;
+			top: 0px;
+			left: 154px;
+			float: right;
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+			}
+
+		#header {
+			background: #f5f5f5;
+			}
+
+		#text {
+			border-top: 1px solid #aaa;
+			border-left: 1px solid #aaa;
+			border-bottom: 1px solid #aaa;
+			background: #fff;
+			margin: 0 0 50px 0;
+			padding: 20px 10px 10px 10px;
+			}
+
+		.imagebox {
+			float: right;
+			margin: 10px;
+			padding: 10px;
+			width: 220px;
+			background: #f9f9f9;
+			border: 1px solid #aaa;
+			text-align: center;
+			font-size: 95%;
+			}
+
+		.textbox {
+			margin: 10px 0;
+			padding: 10px;
+			background: #f9f9f9;
+			border: 1px solid #aaa;
+			width: 250px;
+			text-align: center;
+			}
+
+		a {
+			text-decoration: none;
+			color: #002bb8;
+			background: none;
+			}
+		a:visited {
+			color: #5a3696;
+			}
+		a:active {
+			color: #faa700;
+			}
+		a:hover {
+			text-decoration: underline;
+			}
+
+		img {
+			border: none;
+			vertical-align: middle;
+		}
+
+		p {
+			margin: .4em 0 .5em 0;
+			line-height: 1.5em;
+		}
+
+		.sitesub { font-size: 95%; padding-bottom: 10px;}
+
+		hr {
+			height: 1px;
+			color: #aaa;
+			background-color: #aaa;
+			border: 0;
+			margin: .2em 0 .2em 0;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+			color: black;
+			background: none;
+			font-weight: normal;
+			margin: 0;
+			padding-top: .5em;
+			padding-bottom: .17em;
+			border-bottom: 1px solid #aaa;
+		}
+		h1 { font-size: 188%; }
+		h2 { font-size: 150%; }
+		h3, h4, h5, h6 {
+			border-bottom: none;
+			font-weight: bold;
+		}
+		h3 { font-size: 132%; }
+		h4 { font-size: 116%; }
+		h5 { font-size: 100%; }
+		h6 { font-size: 80%;  }
+
+		#centered {
+			text-align: center;
+			}
+
+		ul {
+			list-style: none;
+			text-align: left;
+			}
+		</style>
+	</head>
+	<body>
+		{{ content }}
+	</body>
+</html>

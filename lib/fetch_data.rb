@@ -12,13 +12,13 @@ class FetchData
 
   def retrieve_and_save_first_page
     File.open("_data/raw_data_with_headers.json", "w") do |output|
-      output.write(bibliocloud_data(page: 1))
+      output.write(consonance_data(page: 1))
     end
   end
 
   def all_pages
     array = total_pages_count.times.map do |page|
-      snipped_bibliocloud_data(page: page + 1)
+      snipped_consonance_data(page: page + 1)
     end
     File.open("_data/raw_data.json", "w") do |output|
       output.write(array.to_json)
@@ -29,16 +29,16 @@ class FetchData
     json_parse_raw_data_with_headers["total_pages"]
   end
 
-  def snipped_bibliocloud_data(page:)
-    JSON.parse(bibliocloud_data(page: page))["products"]
+  def snipped_consonance_data(page:)
+    JSON.parse(consonance_data(page: page))["products"]
   end
 
   def json_parse_raw_data_with_headers
     JSON.parse(File.open("_data/raw_data_with_headers.json", "r").read)
   end
 
-  def bibliocloud_data(page:)
-    uri = URI.parse("https://app.bibliocloud.com/api/products.json?q[shops_id_eq]=1&page=#{page}")
+  def consonance_data(page:)
+    uri = URI.parse("https://web.consonance.app/api/products.json?q[shops_id_eq]=1&page=#{page}")
     request = Net::HTTP::Get.new(uri)
     request["Authorization"] = "Token token=2b095ba3c7db4f3ebfdd17ae973e13aa"
 
