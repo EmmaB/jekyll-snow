@@ -28,7 +28,7 @@ $ bundle exec jekyll serve
 
 On the command line:
 
-`ruby lib/seed.rb`
+`API_KEY=1234567890 ruby lib/seed.rb`
 
 `jekyll build --watch`
 

@@ -40,7 +40,7 @@ class FetchData
   def consonance_data(page:)
     uri = URI.parse("https://web.consonance.app/api/products.json?q[shops_id_eq]=1&page=#{page}")
     request = Net::HTTP::Get.new(uri)
-    request["Authorization"] = "Token token=2b095ba3c7db4f3ebfdd17ae973e13aa"
+    request["Authorization"] = "Token token=#{ENV['API_KEY']}"
 
     req_options = {
       use_ssl: uri.scheme == "https",
