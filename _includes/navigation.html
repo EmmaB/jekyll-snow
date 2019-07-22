@@ -1,16 +1,21 @@
-<nav>
-	<a class="nav-toggle" id="open-nav" href="#">&#9776;</a>
-	<ul>
-		{% for link in site.data.navigation.links %}
-			{% assign class = "" %}
-			{% if link.highlight %}
-				{% assign class = class | append: " highlight" %}
-			{% endif %}
+<div class="line">
+		<div class="circle">
+			<div class="mask">
+				<div class="stroke"></div>
+			</div>
+		</div>
+	</div>
 
-			{% if link.link == page.url %}
-				{% assign class = class | append: " active" %}
-			{% endif %}
-			<li><a href="{{ site.baseurl }}{{ link.link }}" class="{{ class }}" {% if link.new_window %}target="_blank"{% endif %}>{{ link.name }}</a></li>
-		{% endfor %}
-	</ul>
-</nav>
+	<nav class="nav">
+		<ul class="nav-item-container ">
+			<li class="nav-item">Blog</li>
+			<li class="nav-item"><a href="/portfolio/">Books</a></li>
+		</ul>
+		<ul class="nav-item-container">
+			<li ><a href="{{ site.baseurl }}/" class="snowflake nav-item "></a></li>
+		</ul>
+		<ul class="nav-item-container">
+			<li class="nav-item">About</li>
+			<li class="nav-item">Submissions</li>
+		</ul> 
+	</nav>

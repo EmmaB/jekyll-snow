@@ -2,30 +2,6 @@
 layout: default
 ---
 {% assign portfolio = site.pages | where: "path", "portfolio.html" | first %}
-<style>
-* {
-    box-sizing: border-box;
-}
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-}
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.book {
-	top: -250px;
-	position: relative;
-	margin-left: -4px;
-}
-.metadata {
-	top: -100px;
-	position: relative;
-}
-</style>
 
 {%
   include structuredData.html
@@ -38,72 +14,53 @@ layout: default
   url = page.url
 %}
 
-<section class="hero diagonal">
-	<div class="container">
-		{% if portfolio.heading %}
-		<h2><a href="{{ site.baseurl }}/portfolio/">{{ page.pub_date | date: "%b %Y" }}</a> / {{ page.title | capitalize }}</h2>
-		{% endif %}
-		{% if page.subtitle %}
-			<p class="subtext">{{ page.subtitle }}</p>
-		{% endif %}
-	</div>
-</section>
-<section class="diagonal">
-	<div class="container">
-		<div class="row">
-		  <div class="column book">
-				<img class="large" src="{% include relative-src.html src=page.image_path %}" >
-        <p> Published {{page.pub_date | date: "%b %d, %Y"}} • {{page.page_count}} pages <br/> {{page.measurements}}mm </p>
-        <p>
-          ISBNs:<br/>
-          {{page.isbn}}<br/>
-          {{ page.isbns | split: " " | join: "<br/>" }}
-        </p>
-        <h4>Buy {{page.title}}</h4>
-        <p>
-          <a target="_blank" href="{{ page.wordery_url          }}">Wordery            </a><br/>
-          <a target="_blank" href="{{ page.waterstones_url      }}">Waterstones        </a><br/>
-          <a target="_blank" href="{{ page.foyles_url           }}">Foyles             </a><br/>
-          <a target="_blank" href="{{ page.book_depository_url  }}">Book Depository    </a><br/>
-          <a target="_blank" href="{{ page.wh_smith_url         }}">WHSmith            </a><br/>
-          <a target="_blank" href="{{ page.blackwells_url       }}">Blackwells         </a><br/>
-          <a target="_blank" href="{{ page.oxfam_url            }}">Oxfam              </a><br/>
-        </a>
-        <p>
-          <a target="_blank" href="{{ page.amz_uk_url }}">Amazon UK</a> •
-          <a target="_blank" href="{{ page.amz_us_url }}">Amazon US</a> •
-          <a target="_blank" href="{{ page.amz_ca_url }}">Amazon CA</a> •
-          <a target="_blank" href="{{ page.amz_de_url }}">Amazon DE</a> •
-          <a target="_blank" href="{{ page.amz_br_url }}">Amazon BR</a> •
-          <a target="_blank" href="{{ page.amz_mx_url }}">Amazon MX</a> •
-          <a target="_blank" href="{{ page.amz_fr_url }}">Amazon FR</a> •
-          <a target="_blank" href="{{ page.amz_es_url }}">Amazon ES</a> •
-          <a target="_blank" href="{{ page.amz_jp_url }}">Amazon JP</a> •
-          <a target="_blank" href="{{ page.amz_in_url }}">Amazon IN</a> •
-        </p>
-        <p>
-          <a target="_blank" href="{{ page.kobo_url             }}">Kobo               </a><br/>
-          <a target="_blank" href="{{ page.infini-beam_url      }}">Infinibeam         </a><br/>
-          <a target="_blank" href="{{ page.google_play_url      }}">Google Play        </a><br/>
-          <a target="_blank" href="{{ page.hive_url             }}">Hive               </a><br/>
-          <a target="_blank" href="{{ page.booktopia_url        }}">Booktopia          </a><br/>
-          <a target="_blank" href="{{ page.barnes_and_noble_url }}">Barnes & Noble     </a><br/>
-          <a target="_blank" href="{{ page.worldcat_url         }}">Worldcat           </a><br/>
-          <a target="_blank" href="{{ page.books_a_million_url  }}">Books A Million    </a><br/>
-          <a target="_blank" href="{{ page.book_finder_url      }}">Book Finder        </a><br/>
-        </p>
-
-		  </div>
-		  <div class="column metadata">
-        <h2>{{page.author}}</h2>
-        <h4>About {{page.title}}</h4>
-        <p>{{page.blurb}}</p>
-        {% if page.reviews %}
-          <h4>Reviews</h4>
-        {% endif %}
-        <p>{{page.reviews}}</p>
-		  </div>
-		</div>
-
-	</div>
+<section class="portfolio-container ">
+  <div class="sidebar">
+  <img class="large" src="{% include relative-src.html src=page.image_path %}" >
+    <h4>Buy {{page.title}}</h4>
+    <ul class="bookstores">
+      <li><a class="bookstore" target="_blank" href="{{ page.wordery_url          }}">Wordery        </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.waterstones_url      }}">Waterstones    </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.foyles_url           }}">Foyles         </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.book_depository_url  }}">Book Depository</a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.wh_smith_url         }}">WHSmith        </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.blackwells_url       }}">Blackwells     </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.oxfam_url            }}">Oxfam          </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_uk_url           }}">Amazon UK      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_us_url           }}">Amazon US      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_ca_url           }}">Amazon CA      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_de_url           }}">Amazon DE      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_br_url           }}">Amazon BR      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_mx_url           }}">Amazon MX      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_fr_url           }}">Amazon FR      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_es_url           }}">Amazon ES      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_jp_url           }}">Amazon JP      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.amz_in_url           }}">Amazon IN      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.kobo_url             }}">Kobo           </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.infini-beam_url      }}">Infinibeam     </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.google_play_url      }}">Google Play    </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.hive_url             }}">Hive           </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.booktopia_url        }}">Booktopia      </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.barnes_and_noble_url }}">Barnes & Noble </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.worldcat_url         }}">Worldcat       </a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.books_a_million_url  }}">Books A Million</a></li>
+      <li><a class="bookstore" target="_blank" href="{{ page.book_finder_url      }}">Book Finder    </a></li>
+    </ul>
+  </div>     
+  <div class="content">
+    <h1 class="book-page">{{page.title}}</h1>
+    <h2>{{page.author}}</h2>
+    <p> Published {{page.pub_date | date: "%b %d, %Y"}} • {{page.page_count}} pages • {{page.measurements}}mm </p>
+    <p>
+      ISBNs:
+      {{page.isbn}} 
+      {{ page.isbns | split: " " | join: " " }}
+    </p>
+    <h4>About {{page.title}}</h4>
+    <p>{{page.blurb}}</p>
+    {% if page.reviews %}
+      <h4>Reviews</h4>
+    {% endif %}
+    <p>{{page.reviews}}</p>
+  </div>
 </section>
