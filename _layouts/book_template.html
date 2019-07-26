@@ -13,10 +13,25 @@ layout: default
   gbp_price = page.gbp_price
   url = page.url
 %}
+<h1>Snowbooks</h1>
 
 <section class="portfolio-container ">
   <div class="sidebar">
-  <img class="large" src="{% include relative-src.html src=page.image_path %}" >
+    <br/>
+    <img class="large" src="{% include relative-src.html src=page.image_path %}" >
+  </div>     
+  <div class="content">
+    <h1 class="book-page">{{page.title}}</h1>
+    <h2>{{page.author}}</h2>
+    <p>{{page.blurb}}</p>
+    {% if page.reviews %}
+      <h4>Reviews</h4>
+    {% endif %}
+    <p>{{page.reviews}}</p>
+    <p><b> Published {{page.pub_date | date: "%b %d, %Y"}} • {{page.page_count}} pages • {{page.measurements}}mm • 
+      ISBNs:
+      {{page.isbn}} • {{ page.isbns | split: " " | join: " • " }}
+    </b></p>
     <h4>Buy {{page.title}}</h4>
     <ul class="bookstores">
       <li><a class="bookstore" target="_blank" href="{{ page.wordery_url          }}">Wordery        </a></li>
@@ -46,21 +61,6 @@ layout: default
       <li><a class="bookstore" target="_blank" href="{{ page.books_a_million_url  }}">Books A Million</a></li>
       <li><a class="bookstore" target="_blank" href="{{ page.book_finder_url      }}">Book Finder    </a></li>
     </ul>
-  </div>     
-  <div class="content">
-    <h1 class="book-page">{{page.title}}</h1>
-    <h2>{{page.author}}</h2>
-    <p> Published {{page.pub_date | date: "%b %d, %Y"}} • {{page.page_count}} pages • {{page.measurements}}mm </p>
-    <p>
-      ISBNs:
-      {{page.isbn}} 
-      {{ page.isbns | split: " " | join: " " }}
-    </p>
-    <h4>About {{page.title}}</h4>
-    <p>{{page.blurb}}</p>
-    {% if page.reviews %}
-      <h4>Reviews</h4>
-    {% endif %}
-    <p>{{page.reviews}}</p>
+
   </div>
 </section>

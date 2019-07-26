@@ -19,8 +19,21 @@ body {
 p {
   color: black;
   font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 0.75em;
+  line-height: 34px;    
+
+  @media (min-width: 1110px) {
+    // font-size: 1em;
+    line-height: 45px;
+  }
+}
+
+h2 {
   font-size: 1em;
-  line-height: 45px;
+
+  @media (min-width: 1110px) {
+    font-size: 1.5em;
+  }
 }
 
 li {
@@ -30,12 +43,11 @@ li {
 a {
   color: $dark;
   text-decoration: none;
-  padding: 0 20px;
+  // padding: 0 20px;
 }
 
-a:hover {
-  background-color: #cdfefabd;
-  border-radius: 20px;
+a:hover:not(.snowflake) {
+  border-bottom: 5px solid $dark;
 }
 
 .stroke {
@@ -54,7 +66,7 @@ a:hover {
   margin: 0 auto;
   font-size: 240px;
   transform: rotate(90deg);
-  top: -140px;
+  top: -140px;      
 }
 
 .mask {
@@ -63,30 +75,51 @@ a:hover {
 }
 
 .line {
-  border-top: 20px solid $dark;
-  position: relative;
-  top: 100px;
+  display: none;
+
+
+  @media (min-width: 1110px) {
+    display: block;
+    border-top: 20px solid $dark;
+    position: relative;
+    // top: 80px;
+    top: 100px;
+  }
 }
 
 .nav {
-  max-width: 1100px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0;
   position: relative;
-  top: -250px;
+  // top: -270px;
   display: flex;
   justify-content: space-between;
+
+  @media (min-width: 1110px) {
+    max-width: 1100px;
+    top: -250px;
+  }  
 }
 
 .nav-item-container {
   display: inline-block;
   font-weight: 800;
   width: 450px;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .nav-item {
-  display: inline-block;
-  padding: 0 30px;
+  display: inline;
+  font-size: 0.6em;
+  padding-right: 10px;
+
+  @media (min-width: 1110px) {
+    display: inline-block;
+    padding: 0 30px;
+    font-size: 1em;
+  }
 }
 
 .nav-item__flake-space {
@@ -99,66 +132,99 @@ a:hover {
   top: 10px;
 }
 
-.nav ul {
-  padding-inline-start: 0px;
+ul {
+  padding-inline-start: 0 !important;
 }
 
 .snowflake {
   content: url(/images/FLAKE.jpg);
   margin: 0 auto;
-  width: 5em;
+  width: 10em;
   mix-blend-mode: multiply;
   display: inherit;
+
+  @media (min-width: 1110px) {
+    width: 5em;
+  }
 }
 
-a:hover {
-  filter: sepia
+.snowflake:hover {
+  filter: brightness(1.5);
 }
 
 .banner {
-  background: url(/images/alice.jpg);
-  background-repeat: no-repeat;
-  background-size: 100%;
-  min-height: 500px;
-  position: absolute;
-  width: 100%;
-  top: 100px;
-  background-position: 0 35%; 
+
+  display: none;
+
+  @media (min-width: 1110px) {
+    display: block;
+
+    background: url(/images/alice.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 500px;
+    position: absolute;
+    width: 100%;
+    // top: 10px;
+    background-position: 0 35%; 
+    top: 100px;
+  }
 }
 
 h1 {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
-  background: -webkit-gradient(linear,left top,right top,from(#e4eefc),to(#ccfffa));
-  background: linear-gradient(to bottom, #fff, #3a94b747);
+  background: -webkit-gradient(linear,left top,right top,from(#e4eefc),to(#ccfefa));
+  background: linear-gradient(to bottom, #fff, #ccfefa);
   padding: 10px 0;
   margin: 0;
   border-bottom: 12px solid #3a3a3a;
   text-align: center;
-  letter-spacing: 30px;
-}
+  font-size: 1em;
 
-h1:hover {
-  background: -webkit-gradient(linear,left top,right top,from(#e4eefc),to(#ccfffa));
-  background: linear-gradient(to bottom, #fff, #43add647);
+  @media (min-width: 1110px) {
+    font-size: 2em 
+  }
 }
 
 .container {
   border-top: 12px solid #3a3a3a;
   position: relative;
-  top: 120px;
+  top: -156px;
+  
+  @media (min-width: 1110px) {
+    top: 120px;
+  }
 }
 
 .page-container {
   position: relative;
-  top: -250px;
   flex: 1;
+  top: -156px;
+  border-top: 12px solid #3a3a3a;
+
+  section {
+    @media (min-width: 1110px) {
+      padding: 0 70px;
+      width: 100%;
+    }  
+  }
+
+  @media (min-width: 1110px) {
+    border-top: none;
+    top: -238px;
+  }
 }
 
 section {
   margin: 0 auto;
   max-width: 1250px;
-  padding: 0 70px;
+  padding: 0 20px;
+
+  @media (min-width: 1110px) {
+    padding: 0 70px;
+    width: 800px;
+  }
 }
 
 p a, li a.bookstore {
@@ -188,9 +254,15 @@ p a:hover, li a.bookstore:hover {
 
 footer {
   border-top: 20px solid $dark;
-  height: 100px;
   padding: 30px 0;
   background: linear-gradient(to right,#fce4e4,#ccf8ff);
+  position: relative;
+  top: 150px;
+
+  @media (min-width: 1110px) {
+    height: 100px;
+    top: 0;
+  }
 }
 
 footer ul {
@@ -217,15 +289,24 @@ footer li a {
 
 .home_img {
   float: right;
-  width: 240px;
+  width: 100%;
   border: 5px solid $dark;
+
+  @media (min-width: 1110px) {
+    width: 240px;
+
+  }
 }
 
 .sshot {
   float: left;
   margin-right: 20px;
-  width: 440px;
+  width: 100%;
   border: 5px solid $dark;
+
+  @media (min-width: 1110px) {
+    width: 440px;
+  }
 }
 
 .image-grid {
@@ -234,22 +315,29 @@ footer li a {
   flex-flow: row wrap;
   justify-content: center;
   flex-direction: row;
+  padding: 40px 0 0;
 }
 
 li.image {
   list-style-type: none;
-  padding: 10px;
   display: flex;
   flex-direction: column;
+  padding: 0 10px;
+
+  @media (min-width: 1110px) {
+    padding: 10px;
+  }
 }
 
 li.image a:hover {
-  background: yellow;
+  border-bottom: none;
+  filter: brightness(1.2);
 }
 
 .cover {
   height: 330px;
   border: 5px solid $dark;
+  width: auto;
 }
 
 .metadata {
@@ -257,7 +345,7 @@ li.image a:hover {
   font-size: 22px;
   width: 200px;
   line-height: 28px;
-  margin-top: 10px;
+  margin: 10px 0 10px 0px
 }
 
 .bookstores {
@@ -276,15 +364,27 @@ li.image a:hover {
 
 .portfolio-container {
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1110px) {
+    flex-direction: row;
+  }
 }
 
 .content {
   flex: 2;
-  margin-left: 30px;
+
+  @media (min-width: 1110px) {
+    margin-left: 30px;
+  }
 }
 
 .sidebar {
   flex: 1;
+}
+
+.large {
+  width: 100%;
 }
 
 h1.book-page {
