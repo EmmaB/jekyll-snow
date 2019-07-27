@@ -4,8 +4,8 @@ heading: Our books
 subtitle: The finest in fantasy and genre fiction, plus a few surprises.
 layout: default
 ---
-<h1>OUR BOOKS</h1>
-<section>
+<h1>The finest in fantasy and fiction, with some delicious surprises along the way...</h1>
+<section class="portfolio">
 	{% assign unique_tags = '' | split: '' %}
 	{% assign serieses = site.data.processed_books | group_by: "series" | sort: "title" | reverse %}
 	{% for series in serieses  %}
