@@ -1,9 +1,6 @@
 ---
 ---
 
-$pattern: "{{ site.baseurl }}/images/pattern.png";
-$screenshot-buttons: "{{ site.baseurl }}/images/screenshot-buttons.svg";
-
 $dark: #c4c0ce;
 $black: #232323;
 
@@ -24,7 +21,6 @@ p {
   line-height: 34px;    
 
   @media (min-width: 1110px) {
-    // font-size: 1em;
     line-height: 45px;
   }
 }
@@ -44,7 +40,6 @@ li {
 a {
   color: $black;
   text-decoration: none;
-  // padding: 0 20px;
 }
 
 a:hover:not(.snowflake) {
@@ -82,7 +77,6 @@ a:hover:not(.snowflake) {
     display: block;
     border-top: 20px solid $dark;
     position: relative;
-    // top: 80px;
     top: 70px;
   }
 }
@@ -109,7 +103,6 @@ a:hover:not(.snowflake) {
   margin: 0 auto;
   padding: 0;
   position: relative;
-  // top: -270px;
   display: flex;
   justify-content: space-between;
 
@@ -178,15 +171,13 @@ ul {
 
   @media (min-width: 1110px) {
     display: block;
-
     background: url(/images/alice.jpg);
     background-repeat: no-repeat;
     background-size: 100%;
     min-height: 500px;
     position: absolute;
     width: 100%;
-    // top: 10px;
-    background-position: 0 35%; 
+    background-position: 0 40%; 
     top: 70px;
     transition: background 0s;
   }
@@ -199,10 +190,9 @@ ul {
   min-height: 500px;
   position: absolute;
   width: 100%;
-  background-position: 0 35%; 
+  background-position: 0 40%; 
   top: 70px;
   transition: background 1s;
-
 }
 
 .container h1 {
@@ -222,7 +212,6 @@ ul {
   @media (min-width: 1110px) {
     font-size: 2em;
     letter-spacing: 10px;
-
   }
 }
 
@@ -334,13 +323,11 @@ footer p {
 footer li {
   flex: 1;
   list-style: none;
-
 }
 
 footer li a {
   text-decoration: none;
   color: white;
-
 }
 
 .home_img {
