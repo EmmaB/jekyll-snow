@@ -1,0 +1,42 @@
+---
+layout: post
+title: My geekdom knows no bounds
+date: '2007-09-15T00:00:00+00:00'
+permalink: my-geekdom-knows-no-bounds
+---
+<div class="pic"><img alt="wordcorner.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/wordcorner.jpg" width="200" height="156" /></div>
+
+It's Saturday night. So what am I doing? I'm trying to master Office 2007 and all its XMLy goodness. Why? Well, I'm trying to find a way to create a nicely laid out Word 2007 document that can be populated with data from an XML file - specifically an Onix file full of information about one of our books. That way I can design a document once and churn out a version for each of our titles at the click of a button. Thanks in large part to <a href="http://blogs.msdn.com/erikaehrli/archive/2006/08/11/word2007DataDocumentGenerationPart1.aspx#698808">this website</a> this is what you do. 
+
+1) First, create an XML file of one title's records. I used my most recent ONIX file from Anko's APM. I saved it as c:\todaysonix.xml
+
+2) Now, load the XML file into Word. To do this, open Word 2007, create a new file. Now create a new macro (from the developer tab. To show the developer tab, go to the office button, and click Word Options at the bottom of the dialogue box. Click Show Developer Tab in Ribbon) and paste the following into it: 
+
+   ActiveDocument.CustomXMLParts.Add
+   ActiveDocument.CustomXMLParts(4).Load ("c:\todaysonix.xml")
+
+3) Next, create tags in the Word document where you want the XML data to go. On the Developer / Controls tab, insert some plain text content controls. I inserted four of them just to get started. 
+
+4) Now, map the tags to the XML data. Create a new macro, and paste this in: 
+
+Dim strXPath1 As String
+strXPath1 = "/ONIXMessage/Product/ProductIdentifier[ProductIDType='03']/IDValue"
+ActiveDocument.ContentControls(1).XMLMapping.SetMapping strXPath1
+
+Dim strXPath2 As String
+strXPath2 = "/ONIXMessage/Product/BICMainSubject"
+ActiveDocument.ContentControls(2).XMLMapping.SetMapping strXPath2
+
+Dim strXPath3 As String
+strXPath3 = "/ONIXMessage/Product/Title[TitleType='01']/TitleText"
+ActiveDocument.ContentControls(3).XMLMapping.SetMapping strXPath3
+
+Dim strXPath4 As String
+strXPath4 = "/ONIXMessage/Product/OtherText[TextTypeCode='01']/Text"
+ActiveDocument.ContentControls(4).XMLMapping.SetMapping strXPath4
+
+5) Run the macros in the word doc (you'll probably have to save it first). And voila, the fields update with the ONIX / XML data. Bingo bango bongo, as I declared when it worked first time. 
+
+6) Now it's working, you can add as many ONIX fields as you like, and format it to taste. Then once it's done, you can save it as a template and use it to produce as many different documents as you like from your various ONIX title files. 
+
+Whoopdeedoo, yet another way that I can avoid re-typing data the whole time. Tomorrow I might try this in Excel to see if I can autopopulate the retailer Excel files that take so much time. I'm probably not going to use the Word thing all that much, because using XSLT to create xhtml files + css seems more flexible but I wanted to know how to do it, just because it would bug me otherwise. Word 2007, I have vanquished you. <br/>Emma

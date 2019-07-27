@@ -1,0 +1,122 @@
+---
+layout: post
+title: Scripting tutorial
+date: '2011-11-11T00:00:00+00:00'
+permalink: scripting-tutorial
+---
+<div class="pic"><img alt="PhotoshopFeather.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/PhotoshopFeather.jpg" width="264" height="220" /></div>
+
+Curses. Now two people <a href="http://www.snowbooks.com/weblog/2011/11/save_time_people_automate.html#comments">have asked</a> that I take you through the Photoshop script I recently wrote. And one of those people I actually know, so now I suppose I'll have to do it. Even though I know all you other people reading this now aren't going to bother with it. You'll stop reading in a paragraph or two because something shiny will catch your eye or X Factor will be on or, now that I've mentioned X Factor, you'll realise you'd like to go to the Daily Mail website and catch up on the latest sizzling gossip. So here is a link for <a href="http://www.dailymail.co.uk/home/search.html?sel=site&searchPhrase=x+factor">that</a>.
+
+Ahem. Now the rest of you open your textbooks to chapter three and we'll begin. Here's a <a href="http://www.snowbooks.com/weblog/SnowblogPrep.jsx">link to download the script</a> I wrote. I thought about prettifying it up a bit, but then I thought that leaving it rough around the edges would make the point that you can cobble these things together quickly and change them whenever you need to. (And note, it assumes you've created a layer style called 'Snowblog' and tries to apply it. <a href="http://www.adobe.com/designcenter/photoshop/articles/phs8lyrstyl.html">This</a> is how you create a layer style in case you want to try running the script. Go to the <a href="#running">bottom</a> of this post for info on how to run scripts in Photoshop. If you want to look at the script you can open it with NotePad on Windows or TextEdit on OSX - it's just text, so any text editor is fine. But if you want to make changes to it, don't use something complicated like Microsoft Word because it'll try to add lots of formatting. Use NotePad or TextEdit or something similar.)
+
+Remember it's a script for preparing images so I can use them on the SnowBlog as thumbnails alongside the posts. I wrote it in JavaScript which is the web's first choice for little snippets of useful code (though Adobe programs allow other languages). The good thing about the script that we're going to work through is that we can largely tackle it a line at a time. Each line, or little block of lines (known as 'statements'), is fairly self-contained and each does a separate thing. In fact I could probably rewrite the script so that you could delete any one line and it would only knock out a single step in the process: all the rest would work. If you think about that for a moment, that's quite a heartening thought because it means you can write your own scripts simply by assembling lines from other people's scripts or from examples - of which there are many. 
+
+So, let's start with this chunk of code: 
+<code>		app.activeDocument.resizeImage( target_width, target_height )</code>
+It looks like we're doing something with 'app' here. 'app' actually refers to the program itself, i.e. Photoshop, and we're asking it to do something for us. I'm going to refer to 'app' as an 'object'. An 'object' is just a specific piece of a program that's been given a name so that you can talk to it and ask it to run commands. Generally each object will correspond to some part of the program that you're familiar with. For instance, as you'll see later, each layer in Photoshop has an object associated with it that you can use to manipulate the layer. In the line of code above, the Photoshop program itself is an object called 'app' and it has links within it to most of the other objects in the program, corresponding to all the controls and settings and information stored within Photoshop.
+
+In JavaScript, dots between words serve a special function: they let you decide which part of something you want to deal with. We don't need to deal with the whole of 'app'; we just want to talk to the 'active document' object. That's to say, we want to deal with the Photoshop document that's on the screen right now and not any that may be in the background. And finally, we want to ask the active document to do something for us. We want it to run a 'resize image' command, just like you could do manually by clicking on the Image menu and then clicking on 'Image Size...' 
+
+The way you resize an image from within a script is by making use of the 'resizeImage' command. That command is made available by the 'activeDocument' which in turn is part of 'app', the Photoshop program itself. Which is why we write this:
+<code>		app.activeDocument.resizeImage( target_width, target_height )</code>
+
+(I'll explain how you figure out that's where the 'resize image' command lives in a minute.) 
+After the 'resizeImage' command there are some brackets. In most computer languages, round brackets like that are used to supply some information about the command you're triggering. (We refer to a command like this as a 'method' and triggering it as 'calling' it - so we're 'calling the resizeImage method' here). Normal users, when doing this manually, can just fill in the desired image size in the 'Image size...' dialog box. Within a script we have to supply that information by putting it between the brackets after a command. The 'resizeImage' command expects to be told the width and height you're asking for and that's what those two names inside the brackets refer to. But how do they convey that information?
+
+In this case we've included something called 'target_width', then a comma, then something called 'target_height'. Those two names are 'variables'. If you remember your algebra from school, a variable is something you use in place of an actual value. If you knew, when you wrote this script, that you always wanted to resize every image to be 200 pixels wide and 300 high, you wouldn't need to use variables; you could write this:
+<code>		app.activeDocument.resizeImage( 200, 300 )</code>
+But I want to make my little script more flexible. Plus, I'm not necessarily sure what height I want to use until I do some calculation. I've decided that I want to make all images 250 pixels wide, but I don't know in advance what shape my image is. If it's square then I can set the height to 250 pixels: the same as the target width. But if it's tall and thin and I set both its height and width to 250 pixels I'll squash it. But let's just assume for a moment I want to see what that squashed image would look like. I could write this:
+<code>            target_width  = 250</code>
+<code>            target_height = 250</code>
+<code>		app.activeDocument.resizeImage( target_width, target_height )</code>
+
+I set the values of those two variables and then I use them to tell the resizeImage method what I want it to do. That's all there is to creating a variable: think of a name, use an equals sign, and then give it a value. The equals sign is effectively a command that sets the value of the variable to whatever comes after it.
+
+But in this case we actually want to reduce the width to 250 pixels and then set the height to whatever value will keep the image from being distorted. In other words we want to scale down the height by the same fraction as the width, which means we need to do a little calculation. If you look in the script you can see the block of statements that include the resize command looks like this:
+<code>		var height = docRef.height</code>
+<code>		var ratio = target_width / width</code>
+<code>		target_height = height * ratio</code>
+<code>		docRef.resizeImage( target_width, target_height )	</code>
+
+You can see we're setting the variable 'height' to... something. We're actually setting it to be the <i>current</i> height of the image. ('var' just means this is a very temporary variable and doesn't need to be available to the rest of the program.) Before we go on, I probably need to explain what 'docRef' refers to. If you look at the top of the script you can see this statement:
+<code>	docRef = app.activeDocument</code>
+'docRef' is a variable and it has been set to 'app.activeDocument'. That means we can actually use it as shorthand for 'app.activeDocument'. In other words, this line:
+<code>		var height = docRef.height</code>
+means the same thing as this line would:
+<code>		var height = app.activeDocument.height</code>
+but it's easier to type and saves the computer a little time.
+
+Hopefully you can work out what 'app.activeDocument.height' means - at least in general terms. It means you're talking to the active document part of 'app' and you're asking it to run the 'height' command. This command doesn't require any information in brackets because all it does is fetch a piece of data. It fetches (as maybe you've guessed) the height of the image in the active document.
+
+The next line sets the value of a variable called 'ratio' using the result of a calculation. The calculation involves dividing 'target_width' by 'width'. Both of those variables are set elsewhere in the script. 'width' is set with the following line:
+<code>	var width = docRef.width</code>
+As you can guess, what that does is fetch the current width of the image in the active document.
+'target_width' is set right at the top like this:
+<code>	target_width = 250</code>
+which is fairly clear.
+So 'ratio' is calculated by dividing the target width by the current width. For the sake of clarity, let's imagine the result of that calculation is 0.5. The next line would use that value of 0.5 to calculate the 'target_height', scaling it down by the same fraction as the width.
+<code>		target_height = height * ratio</code>
+But what would happen if the image is currently smaller than 250 pixels wide? Well, unless we did something about it, this script would actually scale the image size <i>up</i> so that its width reached 250 pixels. That would probably look bad so we put in a check to see that it doesn't happen. See if you can work out what's actually happening if I list out that whole chunk of code:
+<code>	if(width > target_width){</code>
+<code>		&nbsp;&nbsp;var height = docRef.height</code>
+<code>		&nbsp;&nbsp;var ratio = target_width / width</code>
+<code>		&nbsp;&nbsp;target_height = height * ratio</code>
+<code>		&nbsp;&nbsp;docRef.resizeImage( target_width, target_height )	</code>
+<code>    } </code>
+
+The word 'if' is a command to the program to look at the question inside the round brackets and to work out if it's true. If it is true, then the program should run the statements between the curly braces. If the question isn't true then it should ignore those four lines.
+
+The code inside the round brackets is this: <code>width > target_width</code>
+It's asking whether 'width' is bigger than 'target_width'. In other words, it's checking whether the image needs scaling down (at least based on its width). The way we have things configured at this moment, the calculations and the resize image command only get run if the image is wider than 250 pixels.
+
+So that's the image resized. Let's look at the next line:
+<code>	docRef.resizeCanvas( target_width + h_border, target_height + v_border )</code>
+Now we're asking the active document to call its 'resize canvas' command and we're passing the command some variables. You can see some plus signs inside the round brackets; the program adds up anything that needs adding up before it passes the results to the 'resize canvas' command. So the command will receive three numbers. Let's look at them in turn.
+<code> target_width + h_border</code> takes the 'target_width' and adds 'h_border' to it. If we look at the top of the script we can see where the value of 'h_border' is set:
+<code>	h_border = 10</code>
+I want to create a horizontal border to the right of the image (as well as a vertical border below it) to leave room for a drop shadow. If I made the canvas the same size as the image, you wouldn't see that shadow. So I make the canvas width bigger than the image width by 10 pixels, the value of 'h_border'.
+
+The second entry inside those round brackets does the same thing for height:
+<code>target_height + v_border</code>
+And finally there is the third entry which controls which part of the screen the canvas resize is centred on:
+<code>AnchorPosition.TOPLEFT</code>
+AnchorPosition is actually an object. I didn't create it; it's part of Photoshop. All it really does is return special values you can use elsewhere. By putting 'TOPLEFT' after the dot, we're asking the 'AnchorPosition' object to give us a value corresponding to that name. Now we don't actually care what that value is. You can think of it as a sort of private agreement between the 'resizeCanvas' command and the 'AnchorPosition' object. Whatever value the 'AnchorPosition' object supplies will be passed as the third value to the 'resizeCanvas' command. The creators of Photoshop wanted to give us the choice of centring any changes to the canvas on any of the four corners of the screen, or on the middle of one of the sides or on the centre. Because this is a program, they gave each of those possible options a number. But because humans are bad at remembering numbers, they created the 'AnchorPosition' object to take care of those numbers for us. If we want the canvas resize to be centred on the top left corner of the screen, then we just ask the 'AnchorPosition' object to provide the appropriate magic number to make that happen:
+<code>AnchorPosition.TOPLEFT</code>
+And, by the way, I want the canvas resize to be centred at the top left of the screen because (as you'll recall) I want to make a little bit of border around the right and bottom sides of the screen. So hopefully you can now work out what this line does:
+<code>	docRef.resizeCanvas( target_width + h_border, target_height + v_border,)</code>
+
+I'll explain one more block of commands and then I'll leave you to work out the rest. We'll consider this section:
+<code>	while(docRef.artLayers.length > 2){</code>
+<code>		&nbsp;&nbsp;docRef.artLayers[0].merge()</code>
+<code>	}</code>
+
+The 'while' command is like the 'if' command in a lot of ways. It has a question inside its round brackets, and the statements between its curly braces only get run if the answer to that question is true. But unlike the 'if' command, the 'while' command will run the statements it contains again and again. And each time it runs them it checks whether the answer to the question is still true. Hence the name: it runs 'while' the answer is true. Only when it's not true does it stop running the statements it contains and allow the program to go on to the next line.
+
+So what is the question? 
+<code>docRef.artLayers.length > 2</code>
+You can probably work out that this expression appears to be checking if the length of the active document's 'artLayers' object is greater than 2. But what does that mean? Well, 'length' isn't the most helpful term. 'artLayers' is simply a collection of all the layers in this Photoshop document. Its 'length' is the number of layers it has. So if it has three or more layers, the question inside the brackets is true and the statement inside the curly braces will be run.
+That statement looks like this:
+<code>		docRef.artLayers[0].merge()</code>
+It is doing something to the collection of layers in this Photoshop document. What it's actually doing is singling out one of those layers. That's what the square brackets are for. 'artLayers' is a collection of objects known as an 'array'. You single out one entry in an array by putting a number inside some square brackets: the number tells 'artLayers' which one of its layers you're interested in. I've supplied the number '0' because that's the top layer in the document. (Be aware: lots of computer languages start counting things at zero.) Thus we're asking for the top layer and then we're calling that layer's 'merge()' command. As you can probably guess, the merge command merges that layer with the one beneath it. After that has happened, the 'while' statement checks whether there are still more than two layers. If so, the top layer will again get merged with the one beneath it until there's only a single image layer plus a background layer. We want that to be the case because we're trying to end up with a nice flat image we can use on our website. (Note: if the document starts off with only two layers, the statement inside the 'while' command will never be run because the answer to the question inside the brackets will never be true.)
+
+So hopefully that should help get you off the ground when using JavaScript to control Photoshop. If you feel like it, you could look at the other lines in my example script and take a guess at what they do. But what you'll need before you can get stuck in is lots of resources. First off, you need to know about all the objects in  Photoshop so that you can begin to work out which ones to call. They're all listed here:
+<a href="http://cssdk.host.adobe.com/sdk/1.5/docs/WebHelp/references/csawlib/com/adobe/photoshop/package-detail.html">com.adobe.photoshop</a>
+You also could do with some guidance on how to use those objects in a program. Here's a page with two reference guides on it:
+<a href="http://www.adobe.com/devnet/photoshop/scripting.html">Photoshop scripting guides</a>
+It has lots of other guides too, but you want the first and third if you're writing scripts like mine.
+
+You might also want to learn a bit more about JavaScript. One place you could start would be the W3 Schools page here:
+<a href="http://www.w3schools.com/js/default.asp">W3 JavaScript</a>
+
+You should also look at lots of example scripts. Photoshop comes with some. Go to the folder that the Photoshop program lives in and look for a folder called 'Scripting'. Dig around in there and you should find heaps of .jsx files. 
+
+The web is full of JavaScript tutorials and it even has some that are intended for working with Photoshop, especially in places like the <a href="http://www.adobe.com/devnet/photoshop/scripting.html">Adobe forums</a>.
+
+<a name="running">And finally</a>, when you've written your JavaScript script, you need to put it somewhere that Photoshop can find it. Go back to the folder containing the Photoshop program and look for a folder called 'Presets'. Within that, look for a folder called 'Scripts'. If you put a script in there, and then restart Photoshop, you'll see the name of your script under 'Scripts' on the 'File' menu. Just select the menu entry to make the script run.
+
+Good luck and have fun. 
+
+<hr/>
+
+<em>Update</em>: I've tweaked the script a tiny bit to deal with small images properly (it doesn't give a tiny image a bigger canvas any more). Scipt is available <a href="http://www.snowbooks.com/weblog/SnowblogPrepV2.jsx">here</a>. <br/>Rob

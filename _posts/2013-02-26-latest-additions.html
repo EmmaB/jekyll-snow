@@ -1,0 +1,36 @@
+---
+layout: post
+title: Latest additions
+date: '2013-02-26T00:00:00+00:00'
+permalink: latest-additions
+---
+Our changes this week provide a range of improvements across Bibliocloud, from user interface improvements to changes down in the depths of Bibliocloud. From an ease of use point of view, we've re-jigged a few areas so that they make more sense. For instance, when you go in to edit a work, you'll see the Proposals tab first which provides a summary of the most important information at a glance. It's a nicely laid out page which summarises a lot of info about the work, and you can edit the text in place rather than having to go to another form to make changes.  
+<br/><br/>
+If you have a number of imprints in your company, each with different ISBN prefixes, it can be confusing to know which ISBN you should assign to which new edition. Now, on the ISBN13 drop down list, we include the name of the imprint as well as the ISBN13, so it's more straightforward to see which ISBN13 you should allocate to a new edition.
+ <br/><br/>
+
+We've tightened up a few things to make workflow more rigorous. For instance, if a proposed work fails to meet the company's minimum threshold for margin contribution it'll be flagged up with a warning to senior management if you attempt to sign it off.
+<br/><br/>
+
+The marketing texts area has received a magnificent sprucing thanks to some great user feedback. It's now got a weighted star rating which takes the average of all users' ratings; you can attach scanned copy files; you can record the reviewer and the publication if it's a review and you can add keyword tags. The tagging functionality is rather splendid in itself because it means you can efficiently search across works, editions, contacts and marketing texts for keywords. We've thrown in a weighted word cloud of the tags on the homepage for good measure. 
+<br/><br/>
+
+We've linked Bibliocloud to the Twitter API. At the company level, your account updates itself automatically with the latest tweets that mention your company name. Then we collect the latest ten tweets for each mention of each edition's title, and each contact's name.  You can also post tweets directly from Bibliocloud -- we grab the first 109 characters of each marketing text and add in a short link. One click and it's tweeted to Twitter -- whilst Bibliocloud keeps a record of what you've tweeted. We've also hooked up to the Google Books API. In the marketing section you can see all recently published books, and those about to be published, with any information that Google Books has about them.  We'll do the same with Facebook, Goodreads and other APIs in due course -- do let us know which ones are most important to you.  
+  <br/><br/>
+
+One of the principles of good software design is that the user should be in charge -- the software shouldn't do unexpected things behind the scenes.  This principle comes to the fore when we consider how data should be saved. On the one hand, it would seem quite useful to auto-save data. But what if you're just tinkering, not realising that your data is being saved and thus available to other users -- for instance an unfinished blurb? What about when you're creating a new record -- would you want that to be saved before you've finished? Also autosaving before you've finished amending a form properly would throw up validation errors if you haven't yet got to a field which is required, which would be confusing and annoying. 
+<br/><br/>
+
+Instead, we've implemented a couple of changes which stop you losing unsaved work but which don't take you by surprise. One is that when you've edited a form field, the colour of the field's label immediately changes to blue. It's an easy way to see that there's unsaved data on the page. The other measure we've taken is to pop up a dialogue box if you're about to leave a page which contains unsaved changes. 
+<br/><br/>
+
+On the user interface side of things, we've moved Settings down to its own tool icon. The navigation bar helps you to walk through the basic publishing workflow, and we decided that "Settings" doesn't really fit into that. So all of the preferences -- things such as currency rates, sales channels settings, your ISBN13 list, rights codes and so on, as well as the ability to switch background colours -- are now on a drop-down list marked with a spanner icon under the main nav bar. 
+<br/><br/>
+
+We've spruced up the Address book a little. Bibliocloud shows or hides fields as appropriate, without having to refresh the browser, depending on whether you're creating a new person record, or a new organisation record. 
+<br/><br/>
+
+Behind the scenes we've also made a few changes that you wouldn't necessarily notice, such as a means of resolving UTF encoding problems in the CSV importer. We're also writing additional tests to keep our test coverage high, and using the latest metrics tools to continue to tune our code and database. And coming very soon is our newly written royalties module which will knock your socks off. 
+<br/><br/>
+
+We've got a list as long as your arm of additional changes that we're itching to include, so we'll keep cracking on with that, and keep you posted! <br/>

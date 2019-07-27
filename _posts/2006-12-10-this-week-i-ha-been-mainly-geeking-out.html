@@ -1,0 +1,10 @@
+---
+layout: post
+title: This week I ha' been mainly.... geeking out
+date: '2006-12-10T00:00:00+00:00'
+permalink: this-week-i-ha-been-mainly-geeking-out
+---
+<img alt="astro.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/astro.jpg" width="68" height="110" />
+Because our distributors, LBS, look after our inventory, ship our books, bill our customers and then collect the precious, precious money, they know how our business is doing in quite a bit of detail. Kind people that they are, they share this with us by giving us access to various reports about stock and sales and debtors. In fact they let us have access to three different systems: the live, production machine that offers ugly, but very up-to-date, text-only reports - think computer display from 1985. Next is a repository of prettier, off-the-shelf reports on their report2web system. And finally, they even have a cognos-fronted data warehouse where you can drag and drop to your heart's content until you've made the report of your dreams. More than enough for anyone... you might think.
+
+So what have I been doing this week? I've been writing a little application that takes their pretty reports, downloads them, strips out the formatting and indents, the titles and sub-titles, the various other foibles, then fills in the blanks, labels everything clearly and stores it in a database - one that resides on our server. The slightly weird, slightly sad thing is that at the end of all my effort, I end up with something that I suspect looks exactly like the raw data LBS produce those pretty reports from. Somewhere, they have a database which looks a lot like mine - except theirs contains other people's data too, so they can't let me have access to it. If the report2web system is matter, then I'm trying to create anti-matter - so that when my application meets theirs the whole lot cancels out and we're left with the raw data that we need to create our own, in-house reports. Which makes me kind of the opposite of a programmer. An anti-programmer? A software reverse-engineer? And to think I planned to be a good, old-fashioned astronaut.  <br/>Rob

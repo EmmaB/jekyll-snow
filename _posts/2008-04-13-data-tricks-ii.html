@@ -1,0 +1,18 @@
+---
+layout: post
+title: Data Tricks II
+date: '2008-04-13T00:00:00+00:00'
+permalink: data-tricks-ii
+---
+<div class="pic"><img alt="XSL.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/XSL.jpg" width="123" height="63" /></div>
+
+Yes, more fun facts about XSL and why you might want to learn more about it, if you're a publisher. Last time, I said XSL was weird. It's weird in a few ways. Firstly, if you've done your homework and read <a href="http://www.snowbooks.com/weblog/A%20simple%20guide%20to%20XML%20for%20publishers.pdf">this document</a> you'll know what I mean when I say that an XSL program, or 'transform' as they're called, is also a valid XML document. That means it's got lots of open and close tags and attributes, so at first glance it looks more like the code behind a web page than a program. <img alt="XSLexample2.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/XSLexample2.jpg" width="500" height="150" />
+I also said that XSL transforms (XSLTs) reformat one document into another one - and that often both the input and the output are XML files. XSL does that in an unusual sort of way. The transform is divided up into sections, called 'templates', and each template is capable of handling a certain kind of XML element. The template in the example snippet above handles <span style="font-family: courier; color: blue;">&lt;ONIXMesssage&gt;</span> elements. You can see that, if you look in the <span style="font-family: courier;">match</span> attribute right at the top. We might have another one that's capable of handling just a single <span style="font-family: courier; color: blue;">&lt;Product&gt;</span> (in Onix a <span style="font-family: courier; color: blue;">&lt;Product&gt;</span> is a title) and a third might handle only the publication date.
+
+You run the XSL program by 'applying' templates to it. The XSL processor reads in the XML input document that you're planning to transform and starts at the top, trying to find a template that can handle whatever the top level element in the file is. If you've thoughtfully written such a template, it will get executed. Presumably, because your plan here is to create some sort of output document, your template will contain instructions to manipulate the input values and then to write some sort of information to the output file. But at any point, as your template works its way through the input document, it can hand a piece of the work to another template - like when I said you might write a template that specifically handles publication dates. Whenever a <span style="font-family: courier; color: blue;">&lt;PublicationDate&gt;</span> element is encountered, you can tell the XSL processor to look for a template to handle it. It works like a subroutine in a BASIC program, in that when you call another template, the program makes a note of where it's got to, goes off and runs that other template, and then comes back and continues from where it left off.
+
+I mentioned that templates will typically want to process bits of the input document and then produce a bit of output. In our case, what we're often doing is taking information from an Onix message and combining it with XHTML tags so as to create a web page. So the Onix input message might contribute the name of a book, but our XSL program wraps that name in XHTML tags so that when a web browser displays our output document that name will be formatted as a heading.
+
+That's probably enough for this instalment. Next time I might give some example bits of XSL code and show how it does its work and what it produces at the end.
+
+Previous post on this subject was <a href="http://www.snowbooks.com/weblog/2008/04/data_tricks.html">here</a>. <br/>Rob

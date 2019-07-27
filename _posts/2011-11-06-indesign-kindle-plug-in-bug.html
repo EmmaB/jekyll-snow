@@ -1,0 +1,17 @@
+---
+layout: post
+title: InDesign Kindle plug-in bug
+date: '2011-11-06T00:00:00+00:00'
+permalink: indesign-kindle-plug-in-bug
+---
+<div class="pic"><a href="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/KindleIndesignPlugin.html" onclick="window.open('http://www.snowbooks.com/weblog/KindleIndesignPlugin.html','popup','width=621,height=476,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false"><img alt="KindleIndesignPlugin-thumb.jpg" src="http://www.snowbooks.com/weblog/KindleIndesignPlugin-thumb.jpg" width="241" height="107" /></a></div>
+
+This post isn't going to make any sense to you unless you're creating Kindle e-books by using Amazon's plugin to InDesign. But if you <em>are</em> making e-books that way, there's a bug you might like to know about. The plugin lives <a href="http://www.amazon.com/gp/feature.html?ie=UTF8&docId=1000234621">here</a>, by the way. It's a beta release and it's flaky, but it's still very useful. The bug I'm referring to is in the 0.95 version (which is the latest as I'm writing this - and I'm using it with InDesign CS5.5 for Mac). The problem is that if you choose the wrong settings when using the plugin, the e-book creation process ignores page breaks in your source file. What that means is that text that's on different pages in your InDesign file ends up on the same page in the finished e-book. You can insert more page breaks into the InDesign document but they have no effect. But with the correct settings, those page breaks do what you'd expect them to and trigger a new page in the e-book wherever they appear.
+
+So what's the setting which controls whether page breaks are honoured? I'll give you a clue: it's not called 'Ignore page breaks'. No. It's the setting marked 'Footnote location'. If you tell the plugin to put the footnotes at the end of chapters ('Before break / new chapter'), then page breaks are honoured. If you choose the 'In place' setting, page breaks are ignored. Of course that makes no sense and is clearly a bug. But if you don't know it's there you could spend hours trying to work out why your Kindle books have all their text smushed together... like I did. Click the thumbnail picture to see the dialog I'm talking about. 
+
+<code>[Update</code>: despite what I said in the rest of this post, 'In place' is not the default setting. I got it wrong. More details <a href="http://www.snowbooks.com/weblog/2011/11/humiliating_bug_climb_down.html">here</a>.<code>]</code> I can't actually imagine who wants their footnotes to appear in the body text of the document. Certainly we don't. So probably very few people choose that setting. Except that it's the default. And if you happen to be starting out and trying to get the plugin to work, you might not realise you have to get the correct footnote setting at the outset or the rest of the process will be derailed.
+
+(And while I generally hope Amazon don't read this blog because I'm so rude about them, if they <em>are</em> reading this: might you guys consider making that plug-in open source? It doesn't seem to create any DRM so presumably it's not doing anything secret, given that Kindle e-books use the well-known mobi format. If you open-sourced the plug-in, folks like me could fix all the bugs and add all sorts of cool extra features and you could cherry-pick the stuff you liked for the official release. Better for you; better for us; better for the whales*.)
+
+*Sorry. Random Star Trek IV quote. <br/>Rob

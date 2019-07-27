@@ -1,0 +1,88 @@
+---
+layout: post
+title: "#2 in the TooEasyByHalf series: building a website"
+date: '2006-12-02T00:00:00+00:00'
+permalink: 2-in-the-tooeasybyhalf-series-building-a-website
+---
+<img alt="toolbox.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/toolbox.jpg" width="100" height="81" />
+This one is for my dad who has had to put up with Frontpage and other web editors for far too long. Web editor programmes are like those bookkeeping packages which have lots of bold primary colours, rounded edges, oversized 'click here' buttons and screens that look like cheques. They look easy to use, but the childish, oversimplified interface just confuses me. I want to understand the double entry journal; they have five multicoloured icons. Quickbooks, I'm looking at you. 
+
+Anyhoo, this tutorial is nothing to do with bookkeeping. This is how I write websites. I am the absolute opposite of a techie, except I am very stingy and impatient and I'd rather spend an hour or two reading big thick IT books than pay, or wait for, someone to do things for me. Honestly, if I can do it, anyone can. I guess that reading this through will take about an hour, but if you're of a mind to write your own site it might save you about a day, which isn't a bad payoff. Obviously, if you have no intention of ever using html, move along, please, and don't click to read more. 
+
+So, here we go. One fresh new website, coming on up. <em><strong>1) Get all the software you need all lined up.</strong></em>
+It's all free! Yey. You need three types of software:
+
+<strong>a) A text editor.</strong>
+Notepad comes free with all MS Office installations, and it's handy. However, I use ConTEXT to edit html, because it colours things in nicely which helps me to understand what's going on. <a href="http://www.context.cx/component/option,com_docman/Itemid,48/">Download for free</a>; click on DOWNLOAD in the box near the top of the screen. It's only 2mb.
+
+<strong>b) An image editor. </strong>
+Photoshop is the only option here. You must have eet. There is a perfectly functional but slightly cut down version called Photoshop Elements for about &pound;60 (you can get it from <a href="http://www.amazon.co.uk/Adobe-Photoshop-Elements-5-PC/dp/B000IB9QXI/sr=8-1/qid=1165070155/ref=pd_ka_1/026-8453309-1302843?ie=UTF8&s=software">Amazon).</a> Life without Photoshop is a frustrating mess so you should have it anyway. 
+
+<strong>c) An ftp manager. </strong>
+For some random reason the pipe that goes out of our office doesn't allow us to access FTP sites at the moment. We upgraded something, which often means we've gone backwards in capability. So we use <a href="http://www.net2ftp.com">www.net2ftp.com</a> and it works fine. You'll need to know the ftp url, username and password of your site but the initial email you got from your hosting provider will contain that. So you don't actually need to 'get' net2ftp as it's a website. 
+
+Good, that's all the kit got. 
+
+<em><strong>2) Write the code. </strong> </em>
+Rather than start from scratch, half-inch the code from a website you like the look of and you can get the CSS for. (It's not really stealing as webpages are in the public domain.) In a browser (Internet Explorer, Firefox, whatever although Firefox is a million times more functional than IE) go to the website, then View, Source. The webpage's code pops up in Notepad, usually, or another text editor - it doesn't matter. To save you the bother of getting at both the code and the css, which is tricky to find, <a href="http://www.snowbooks.com/weblog/fakeindex.html">here</a> is Snowbooks' homepage code. (First, create a new folder on your PC called, erm, 'website'. Right mouse and click 'save as' on the link otherwise it will open in a browser.  Save as 'index.html' in your new folder. Open the file in your new application, ConTEXT, or in Notepad if you ignored my advice.)
+
+Cast your eye over the code and at the same time have www.snowbooks.com open. Hopefully you'll get the gist of which bit of HTML is telling the browser to do what, because the words you see on the webpage are contained in the HTML. This is how I learned HTML and I like to think it's the modern equivalent of learning French, for example, from a French edition of an English book you know off by heart - except HTML is way easier. 
+
+For instance, take this bit of code: 
+< div class="sidebarblock">
+< p>< strong>< a href="authors.html">Authors< /a>< /strong> Looking to get published? < a href="authors.html">Read our information for authors.< /a>< /p>
+< /div >
+
+[Phew, writing this tutorial in an editor which uses html is exhausting. I have tried all sorts of ways to get that to actually look like code. In the end I put a space after every <, otherwise it formats as below.]
+
+<div class="sidebarblock">
+<p><strong><a href="authors.html">Authors</a></strong> Looking to get published? <a href="authors.html">Read our information for authors.</a></p>
+</div>
+
+The bit where it says 
+< strong>< a href="authors.html">Authors< /a>< /strong> 
+means: format this next bit in bold (strong), make it link to the page author.html when you click on it, write the word Authors, end the link, end the bold formatting. As Rob said in his <a href="http://www.snowbooks.com/weblog/2006/11/computers_just_what_is_all_the.html">XML tutorial</a>, it's like the old rules for speechwriting: tell them what you're going to tell them, tell them, tell them what you've told them. HTML always has this structure:
+
+< tag>Hello world!< /tag>
+
+(again, please ignore the spaces). 
+
+So, you have the snowbooks homepage open in ConTEXT. Find where the words that you see on snowbooks.com appear in the html. Try overwriting them with some of your own content. Save the file. Go to windows explorer, double click on your index.html file and you'll see the results of your amends. You'll also see that your webpage looks much less beautiful than ours, which leads us nicely on to the next part of this tutorial... 
+
+<em><strong>3) Design the webpage. </strong></em>
+It's a kind of fundamental rule: design should be separate from content. That's why you don't see many instructions in the html we've looked at about font size, colour, images or spacing. If you look at the top of the html you'll see this: 
+
+< style type="text/css" media="all" title="Snowstyle">
+@ import "styles.css";
+< /style>
+
+which is the instruction to import a stylesheet. <a href="http://www.snowbooks.com/weblog/fakestyles.css">Download snowbooks' style sheet </a>- again, right mouse and save as styles.css in the same folder as index.html. Open it in ConTEXT. 
+
+If you're beady you'll see that there are references in the css that are the same as the html. For example, in the html we have 
+
+< div class="sidebarblock">
+< p>< strong>< a href="authors.html">Authors< /a>< /strong> Looking to get published? < a href="authors.html">Read our information for authors.< /a>< /p>
+< /div>
+
+That 'sidebarblock' bit features in the css too. In fact, that's where the html looks for further instructions - and here they are: 
+
+.sidebarblock {
+	width: 195px;
+	background: transparent url('../siteimages/sidebarspacer.jpg') no-repeat;
+	padding: 40px 0px 20px 0px;
+	}
+
+It says - when this style is applied to the text, make the text 195 pixels wide, find the image called sidebarspacer.jpg, indent it by 40 pixels on the left and 20 pixels on the right. 
+
+The sidebarspacer image is this: <img alt="sidebarspacer.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/sidebarspacer.jpg" width="195" height="24" /> so you can see on snowbooks.com where it features. 
+
+So, next stage: 
+
+<em><strong>4) Amend the images. </strong></em>
+Again, why start from scratch? Hover your mouse over one of the images on snowbooks.com, right mouse, click 'save image as' and save. Open up in photoshop and overwrite that image with whatever you like. The beauty is that all the dimensions are accurate. Once you're done changing the images, resave -with the same name so the html know what to look up - in the same folder as your html and css. Try opening the index.html file now, from windows explorer. There are probably one or two disasters on there, but that's the nature of the thing - maybe you now have enough understanding of how html and css work together to start tinkering. 
+
+There are some fantastically useful resources on the net.  <a href="http://www.w3schools.com/html/default.asp">This</a> is the best, in my view. 
+
+<em><strong>5) Upload the site</strong></em>
+
+Once you're done tinkering, use net2ftp.com to upload all the files to the same folder - the .css, .html and the images. To write this tutorial I created a new website myself, and <a href="http://www.snowbooks.com/weblog/love2fight">here is the result</a>. Nothing like the Snowbooks website, but the only things that have changed are the images and the text. It took about two hours, including writing this blog post. Hooray! <br/>Emma

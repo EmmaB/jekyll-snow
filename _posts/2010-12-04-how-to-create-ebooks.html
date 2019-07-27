@@ -1,0 +1,104 @@
+---
+layout: post
+title: How to create eBooks
+date: '2010-12-04T00:00:00+00:00'
+permalink: how-to-create-ebooks
+---
+<div class="pic"><img alt="KindleApps.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/KindleApps.jpg" width="220" height="167" /></div>
+
+How seriously hard can it be? The whole world is eBook mad at the moment, yet creating the things still seems like a dark art. Anyway, here's a post distilling my research and practice which I hope will shed some light on how you create the things and make them look nice. It's a deliberately simplified approach designed to get your books converted quickly, which is handy when you have a backlog like me. 
+
+---update---
+<a href="http://www.snowbooks.com/weblog/How%20to%20Create%20EBooks.pdf">Here's a PDF</a> of this post. <b>Formats</b>
+
+Snowbooks is concentrating for the moment on two formats: <a href="http://en.wikipedia.org/wiki/EPUB">ePub</a> and <a href="http://en.wikipedia.org/wiki/Mobipocket">Mobipocket</a>. You can read ePub books on the iPad and the iPhone, on the iBooks app. You can read Mobi on Amazon's Kindle. That's surely 80% of the market, and indeed it's our view that the Kindle offering is powering ahead of Apple in its range of titles and availability of readers. For instance, you can read a Kindle title (in the Mobi format) on an iPhone, a PC, a Mac and an iPad, if you download and install the relevant app. However, you can only read an iBook (in the ePub format) on an iPad and iPhone - there's no app for a Mac computer. Berserk. 
+
+There are a number of other formats which include: 
+<a href="http://en.wikipedia.org/wiki/FictionBook">FictionBook (.fb2)</a>
+<a href="http://en.wikipedia.org/wiki/Microsoft_Reader">Microsoft Reader (.lit) for PCs</a>
+<a href="http://en.wikipedia.org/wiki/BBeB">Broadband eBooks (.lrf) for the Librie</a>
+<a href="http://www.ereader.com/">eReader (.pdb) for the Nook</a>
+and also PDF, PMLZ, RB, RTF, SBN, TCR, TXT and Zip. <a href="http://en.wikipedia.org/wiki/.lrf#Broadband_eBooks">Here's</a> an exhaustive comparison of available formats. 
+
+<b>Software and resources</b>
+
+I'm using <a href="https://www.adobe.com/cfusion/tdrc/index.cfm?product=indesign">InDesign CS5</a> to create the eBooks, <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Editions</a> and <a href="http://www.amazon.com/gp/kindle/mac">Kindle for the Mac</a> to preview them, <a href="http://threepress.org/document/epub-validate">ePub Validator</a> from the lovely Threepress Consulting to check them, if I want, and <a href="http://calibre-ebook.com/">Calibre</a> to convert the ePub format to the Kindle format. All those applications are free except for InDesign, but that link above is to the free 30 day trial which is worth grabbing. InDesign CS5 has a handy new feature which is worth upgrading for - I'll tell you more in a moment. 
+
+I read the following useful documents and websites: 
+<a href="http://www.adobe.com/products/creativesuite/design/crossmedia_resources/ebooks_software.html">Adobe white papers</a>
+<a href="http://www.amazon.co.uk/How-Create-eBook-Adobe-InDesign/dp/B0048EK1P8/ref=sr_1_2?ie=UTF8&qid=1291502481&sr=8-2">How to Create eBooks</a>
+<a href="http://www.adobe.com/content/dam/Adobe/en/devnet/indesign/pdfs/indesign-to-ipad.pdf">InDesign to iBooks white paper</a>
+<a href="http://www.adobe.com/devnet/digitalpublishing/articles/indesigntokindle.html">InDesign to Kindle white paper</a>
+Pretty much this <a href="http://infogridpacific.typepad.com/using_epub/2010/02/epub-best-practices-2010.html">whole blog</a>
+
+<b>The Process: Summary</b>
+To create the ePub:
+- Add separate Indesign (.indd) files to an InDesign Book document (which allows you to combine multiple individual files into a set). There should be a file which contains the cover image, and a file which contains the typeset text. 
+- Set up the cover
+- Export to ePub
+- Upload to iBooks and Waterstone's
+
+To create the Mobi:
+- Open the ePub file in Calibre
+- Convert to Mobi using the very straightforward conversion wizard.
+- Upload to Amazon
+
+<b>The Process: Detail</b>
+- Typeset the book in InDesign, making sure to use <a href="http://www.snowbooks.com/weblog/2008/01/paragraph_and_character_styles.html">paragraph and character styles</a>, not local formatting. Make sure you use one style for the chapter headings. This is the style which we'll use to break up the eBook into sections, so only use it on text which you want to start in a new section. Save the typesetting as a single .indd file (don't bother splitting it into one file per chapter, since there's a lovely feature in CS5 which does this for you). 
+
+- Design the cover in Photoshop and place into a new .indd file. It doesn't have to be the same size as the typeset file, but it doesn't hurt if it is. My cover images are 423 x 650 px, 35 x 55mm at 300 pixels per inch - don't make them too large as readers have a limit on the size and won't display at all if the image is much bigger than this. You can download <a href="http://www.snowbooks.com/Cover.indd">this InDesign file</a> and place your cover in the image frame. Note that the cover image is centred. I achieved this by applying a paragraph style to the text frame in which the cover is placed - a method which ensures the centring is carried over into the ePub product. (This tip alone took me about a day's research to figure out...)
+
+- Add both .indd files to an InDesign Book document (which allows you to combine multiple individual files into a set.) Go to File > New > Book and save it as a sensible name e.g. AffinityBridge.indb. Add files to the book by clicking on the + button on the Book palette and navigating to your files. (You can add more files, containing dedications, acknowledgements, end notes etc. but let's keep it simple in this example.) Make sure the file which contained the cover is the first in the list by clicking on it and dragging it to the top. 
+
+<img alt="indb.41" src="http://www.snowbooks.com/weblog/indb.41" width="318" height="242" />
+
+- The first document needs to be the one which defines all the styles in the resultant eBook, so load the cover.indd file with the typeset styles. To to this, open the Paragraph Style palette in Cover.indd, and on the option menu (the one you get by clicking all the way in the top right hand corner of the palette) select Load Paragraph Styles. Navigate to the file which contains the typeset text and simply Open. The Styles from the typeset doc will be loaded into the cover doc. Do the same for Character styles.  
+
+<img alt="Screen shot 2010-12-04 at 21.45.33.png" src="http://www.snowbooks.com/weblog/Screen%20shot%202010-12-04%20at%2021.45.33.png" width="500" />
+
+- To finish off this styles process, set the cover file as the Style Source. Do this by clicking on the box to the left of the Cover file name on the Book palette. This allows most eBook readers to identify this file as the one which contains the cover, which they use for their thumbnails. 
+
+- You want your eBook to be easily navigable, and for this you'll need a table of contents. To do this, set a TOC style in the cover.indd file. So, go to Layout > Table of Contents Styles and select New. From the list of Other Styles, select the one which you've used for chapter headings and click on Add. InDesign will use this to create a useful table of contents. At the same time it breaks the book up into chapters, which makes for a much faster reading experience. Not only that - it means each chapter starts on a page break which is a really nice way to format an eBook (as opposed to the relentless stream of non-breaking text which you'd otherwise get).
+ 
+<img alt="Screen shot 2010-12-04 at 21.49.46.png" src="http://www.snowbooks.com/weblog/Screen%20shot%202010-12-04%20at%2021.49.46.png" width="500" />
+
+- Make sure you <a href="http://www.snowbooks.com/weblog/2010/11/onix_to_xmp.html">add metadata</a> to your book to make it easily discoverable.
+
+- And you're almost done. Export to ePub from the Book palette menu. Click on Export Book to EPUB:
+
+<img alt="Screen shot 2010-12-04 at 21.52.23.png" src="http://www.snowbooks.com/weblog/Screen%20shot%202010-12-04%20at%2021.52.23.png" width="500" />
+
+Then fill out the dialogue boxes as follows: 
+
+<img alt="Screen shot 2010-12-04 at 21.54.00.png" src="http://www.snowbooks.com/weblog/Screen%20shot%202010-12-04%20at%2021.54.00.png" width="500" />
+
+Obviously change the publisher name. The unique ID gets created automatically for you. 
+
+<img alt="Screen shot 2010-12-04 at 21.56.59.png" src="http://www.snowbooks.com/weblog/Screen%20shot%202010-12-04%20at%2021.56.59.png" width="500" />
+
+<img alt="Screen shot 2010-12-04 at 21.57.37.png" src="http://www.snowbooks.com/weblog/Screen%20shot%202010-12-04%20at%2021.57.37.png" width="500" />
+
+This last screen is where the good stuff is. Choose XHTML. DTBook is for people with visual impairment, but isn't a universally supported standard so don't choose unless you know what you're doing. 
+
+Select 'Include InDesign TOC Entries' and 'Use First Level Entries as Chapter Breaks' which will use the chapter headings paragraph style to nicely subdivide your book into chapters automatically. That's the single most useful additional functionality between CS4 and CS5. Check 'Suppress Automatic Entries for Documents', so that the actual name of the chapter appears, rather than 'filename-1', 'filename-2' which is a bit ugly. 
+
+Don't select 'Include Embeddable Fonts'. The functionality is meant to allow you to include fonts in your ePub book, so even if the end reader doesn't have a font installed on their machine, they'd still be able to view the font. However, not all eBook readers support this functionality, and when they don't, you run the risk of fancy fonts being dropped and replaced with something horrible, out of your control. Much better to keep control, and amend your paragraph styles so that any particularly florid fonts are replaced with something a bit more pedestrian (and therefore likely to be installed on most people's machines). 
+
+Hit Export and wait! The ePub version will open in Adobe Digital Editions. 
+
+- Upload to iBooks and Waterstone's
+Apple make it quite easy to register and sell iBooks. Here's their <a href="https://itunesconnect.apple.com/WebObjects/iTunesConnect.woa/wa/apply">iConnect app</a> which only took me half an hour to sort out including validating my bank account details. Email Waterstone's on eBooks.Temp@waterstones.com for their set up process. 
+
+To create the Mobi:
+- Open the ePub file in Calibre. It's the icon on the far left.
+<img alt="Screen shot 2010-12-04 at 22.07.25.png" src="http://www.snowbooks.com/weblog/Screen%20shot%202010-12-04%20at%2022.07.25.png" width="500" />
+
+- Convert to Mobi using the very straightforward conversion wizard. That's the icon third from the left.
+They have a built in user manual if you get stuck but it all seems quite self-explanatory to me. 
+
+- Upload to Amazon. If you don't have an account, email vendor-central@amazon.com to be sent details. 
+
+
+------
+
+I hope this is useful. Do shout with requests for clarification. Oh, and with my Snowangels services hat on, I can help you out with this sort of thing if you have the need - emma@snowangels.org. <br/>Emma

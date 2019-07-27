@@ -1,0 +1,33 @@
+---
+layout: post
+title: Data tricks
+date: '2008-04-11T00:00:00+00:00'
+permalink: data-tricks
+---
+<div class="pic"><img alt="XSL.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/XSL.jpg" width="123" height="63" /></div>
+
+While it's very kind of Em to do some pimping on my behalf, it's clear to me that what chicks really dig is someone who has a good grasp of how abstruse programming languages can be combined with core business data to devise novel time-saving workflows. With that in mind, ladies, let's talk about XSL. First off though, if you're hazy about what XML is, I've written what I think is a very painless introduction to it that doesn't assume you know how to program or hack into Skynet or anything. It's a PDF file and <a href="http://www.snowbooks.com/weblog/A%20simple%20guide%20to%20XML%20for%20publishers.pdf">it's here.
+</a>
+So this is what XSL looks like (at least the way I write it.)
+<img alt="XSLsnippet.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/XSLsnippet.jpg" width="500" height="268" />
+Hmm. Actually, I shouldn't have included that screen grab because now everyone will have stopped reading. So just try to forget you saw it. I just wanted to make the point that XSL is one of the strangest programming languages I've come across. It's designed to turn one kind of document into another. And unless you get clever about it, the input document will need to be formatted as XML and chances are the output document might be too. Why would you want to reformat one XML document into another? Well, here are three kinds of XML document:
+<ul>
+<li>Onix message (the industry standard way of telling someone about a book)</li>
+<li>Web page (providided you write in the variant of HTML known as XHTML)</li>
+<li>InDesign page (you have to create the layout yourself, but all the words can come in via XML)</li>
+</ul>
+
+You need to have the first kind. You might want to automatically generate the second and third kind. You need Onix messages to send out to people because that's what the industry increasingly runs on. But once you've produced those messages, they contain all the information needed to create a web page about each title or to take a blank catalogue layout and fill it with words about your books. And since what you're doing there is to turn one sort of XML document into two other kinds, it stands to reason you'd want to use a weird language like XSL.
+
+We go a little bit further, actually, and regroup our data before creating things like web pages. So, we have an XSL 'program' which looks through the Onix messages for all of our titles and makes a list of all the author names it finds. Then it works back the other way, creating a web page for each author and adding to it information about each of their titles.
+
+We also sneak in a bit of extra data to our Onix message in order to say what genre each title is in. The Onix standard already contains that sort of data in the form of BIC codes but, not to phrase it too technically, they suck. Or rather they tend not to group books in ways we find useful. And the titles of their groupings are too ugly to use without renaming them. And there's two different versions out there which creates quite a mess. So since we'd have to do some work to turn BIC codes into useful classifications, we took the easy way out and added our own codes (the Onix standard leaves space for that sort of thing, thank goodness).
+
+Now, granted, writing all that code* takes a while. But it only needs doing once. Thereafter, turning Onix messages into other useful things like web pages takes moments and is automatic, as Em has described and demonstrated in some of her recent video tutorials. And that's the essence of satisfying IT: a bit of serious head-scratching and deep thought for a few days, but the pay-off is to save weeks of time later, and remove the repetitive drudgery from tasks like website and catalogue updates.
+
+I'll post a bit more about this in the coming weeks; this is just a reminder of what we use this XML/XSL stuff for and why it might be useful to you even if you don't yet grasp the details.
+
+Part II is <a href="http://www.snowbooks.com/weblog/2008/04/data_tricks_ii.html">here</a>.
+
+
+* 'code' means programs or software. But I can't quite bring myself to use those terms even though they're clearer. People who write code don't tend to say things like 'I did some programming the other day'. They 'write code'. They especially don't say 'I wrote a computer software application the other day'. Terms like that only occur on the BBC or in the Daily Mail. <br/>Rob

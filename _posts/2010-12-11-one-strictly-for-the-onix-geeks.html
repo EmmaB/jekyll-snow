@@ -1,0 +1,57 @@
+---
+layout: post
+title: One strictly for the ONIX geeks
+date: '2010-12-11T00:00:00+00:00'
+permalink: one-strictly-for-the-onix-geeks
+---
+<div class="pic"><img src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/xml.jpg"/></div>
+
+I'm not nearly as familiar as Emma is with the ONIX standard and it's time for that to change. But as I'm staring at it now, I'm wondering why they did things the way they did. I hesitate to describe it as 'wrong' because maybe I'm not as <em>au fait</em> with this stuff as I think I am, but I'm certainly finding bits of it 'curious'. Take an excerpt like this: Snippet:
+<div style="color: maroon; margin-left: 20px; margin-right: 20px;">...
+&lt;Measure&gt;
+&nbsp;&nbsp; &lt;MeasureType><span style="color: green;font-weight: bold;">01</span>&lt;/MeasureType&gt;
+&nbsp;&nbsp; &lt;Measurement><span style="color: green;font-weight: bold;">194</span>&lt;/Measurement&gt;
+&nbsp;&nbsp; &lt;MeasureUnitCode><span style="color: green;font-weight: bold;">mm</span>&lt;/MeasureUnitCode&gt;
+&lt;/Measure&gt;
+&lt;Measure&gt;
+&nbsp;&nbsp; &lt;MeasureType&gt;<span style="color: green;font-weight: bold;">02</span>&lt;/MeasureType&gt;
+&nbsp;&nbsp; &lt;Measurement&gt;<span style="color: green;font-weight: bold;">130</span>&lt;/Measurement&gt;
+&nbsp;&nbsp; &lt;MeasureUnitCode&gt;<span style="color: green;font-weight: bold;">mm</span>&lt;/MeasureUnitCode&gt;
+&lt;/Measure&gt;
+&lt;Measure&gt;
+&nbsp;&nbsp; &lt;MeasureType&gt;<span style="color: green;font-weight: bold;">03</span>&lt;/MeasureType&gt;
+&nbsp;&nbsp; &lt;Measurement&gt;<span style="color: green;font-weight: bold;">18</span>&lt;/Measurement&gt;
+&nbsp;&nbsp; &lt;MeasureUnitCode&gt;<span style="color: green;font-weight: bold;">mm</span>&lt;/MeasureUnitCode&gt;
+&lt;/Measure&gt;
+...</div>
+
+In order to find the Measure element for the dimension you're interested in, you have to look inside each Measure and know that it's the code in the MeasureType child element you want to check. Why wouldn't you write it like this instead:
+<div style="color: maroon; margin-left: 20px; margin-right: 20px;">...
+&lt;Measure <em>MeasureType</em>="<span style="color: green;font-weight: bold;">01</span>" &gt;
+&nbsp;&nbsp; &lt;Measurement><span style="color: green;font-weight: bold;">194</span>&lt;/Measurement&gt;
+&nbsp;&nbsp; &lt;MeasureUnitCode><span style="color: green;font-weight: bold;">mm</span>&lt;/MeasureUnitCode&gt;
+&lt;/Measure&gt;
+&lt;Measure <em>MeasureType</em>="<span style="color: green;font-weight: bold;">02</span>" &gt;
+&nbsp;&nbsp; &lt;Measurement&gt;<span style="color: green;font-weight: bold;">130</span>&lt;/Measurement&gt;
+&nbsp;&nbsp; &lt;MeasureUnitCode&gt;<span style="color: green;font-weight: bold;">mm</span>&lt;/MeasureUnitCode&gt;
+&lt;/Measure&gt;
+&lt;Measure <em>MeasureType</em>="<span style="color: green;font-weight: bold;">03</span>" &gt;
+&nbsp;&nbsp; &lt;Measurement&gt;<span style="color: green;font-weight: bold;">18</span>&lt;/Measurement&gt;
+&nbsp;&nbsp; &lt;MeasureUnitCode&gt;<span style="color: green;font-weight: bold;">mm</span>&lt;/MeasureUnitCode&gt;
+&lt;/Measure&gt;
+...</div>
+
+It seems easier to use and to make more sense to use an attribute to label each Measure element and to leave the child nodes for data not labels. Is there some reason to do it the way they have?
+
+And if you want to go the whole hog, I don't think much of their naming and code conventions either. If 'mm' can be the 'code' for millimetres, why does '01' need to be the code for height and not 'h'. Plus, the measurements are jumbled in with other information in DescriptiveDetail. I think I'd prefer this:
+<div style="color: maroon; margin-left: 20px; margin-right: 20px;">...
+&lt;PhysicalDimensions&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;Measurement <i>Dimension</i>="<span style="color: green;font-weight: bold;">h</span>" <i>Unit</i>="<span style="color: green;font-weight: bold;">mm</span>" &gt;<span style="color: green;font-weight: bold;">194</span>&lt;/Measurement&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;Measurement  <i>Dimension</i>="<span style="color: green;font-weight: bold;">w</span>" <i>Unit</i>="<span style="color: green;font-weight: bold;">mm</span>" &gt;<span style="color: green;font-weight: bold;">130</span>&lt;/Measurement&gt;
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;Measurement  <i>Dimension</i>="<span style="color: green;font-weight: bold;">d</span>" <i>Unit</i>="<span style="color: green;font-weight: bold;">mm</span>" &gt;<span style="color: green;font-weight: bold;">18</span>&lt;/Measurement&gt;
+&nbsp;&lt;/PhysicalDimensions&gt;
+...</div>
+
+Seems to me that's more concise, easier to understand, easier to remember and easier to process if you're writing code to manipulate that data (e.g. selecting it in XPath).
+
+It might be unfair to pick on the ONIX for Books standard like this because I've only looked at little pieces of it. And like I say, maybe I'm not as knowledgeable about XML as I think I am. But so far it looks like big chunks of it were decided very broadly in a committee and then the actual implementation was handled by someone who wasn't all that experienced. (But if it turns out there are wise and good reasons for things being the way they are please enlighten me and I'll stand corrected.) <br/>Rob

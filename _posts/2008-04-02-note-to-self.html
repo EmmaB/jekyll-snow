@@ -1,0 +1,31 @@
+---
+layout: post
+title: Note to self
+date: '2008-04-02T00:00:00+00:00'
+permalink: note-to-self
+---
+<div class="pic"><img alt="ExcelGrab.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/ExcelGrab.jpg" width="135" height="101" /></div>
+
+It's highly unlikely that anyone except me will find this useful. But I have to admit that sometimes I use this blog to make a note just for myself to refer back to later. Evil, I know. Anyway, if you want to know some arcane function in Excel, click on. This: 
+
+=IF(ISERROR(VLOOKUP(F42,Sheet1!B:F,5,FALSE)),"-",VLOOKUP(F42,Sheet1!B:F,5,FALSE))
+
+is very handy. A normal IF function looks like this: 
+
+=IF(VLOOKUP(F54,Sheet1!B:F,5,FALSE),VLOOKUP(F54,Sheet1!B:F,5,FALSE),"-")
+
+That means:
+
+IF the Vlookup function is true, return the result of the Vlookup, otherwise return a dash in the cell. 
+
+It looks more complicated than it is - it's simply saying if(this logical test is),(true, return this value),(false, return this value).
+
+However, if the test returns an #N/A, you have to manually delete the cell, because it won't sum if it's in a range of cells that needs to be summed. And in a scale out, which is what I mainly use Vlookups for nowadays, that takes about a minute. A minute that I could be profitably using looking out of the window, or petting the cats. So naturally it must be eliminated. 
+
+So by inserting an ISERROR function as in
+
+=IF(<strong>ISERROR</strong>(VLOOKUP(F42,Sheet1!B:F,5,FALSE)<strong>)</strong>,"-",VLOOKUP(F42,Sheet1!B:F,5,FALSE))
+
+You can get rid of the #N/As automatically. Magic! 
+
+Oh, no-one's reading this. Em of the future, when you search for this post next time you do a scale out: just remember that the ISERROR function will get rid of those annoying #N/As. <br/>Emma

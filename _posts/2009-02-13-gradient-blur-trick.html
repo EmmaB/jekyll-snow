@@ -1,0 +1,15 @@
+---
+layout: post
+title: Gradient Blur Trick
+date: '2009-02-13T00:00:00+00:00'
+permalink: gradient-blur-trick
+---
+<div class="pic"><img alt="StreetThumb.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/StreetThumb.jpg" width="180" height="240" /></div>
+
+If you follow the link in the last post to the Adobe bookshop you won't see an image that looks quite like the thumbnail I provided. That's because I faked a <a href="http://en.wikipedia.org/wiki/Tilt_shift">tilt-shift camera</a> look in Photoshop. Then I thought some of you might want to know how to do that (I had to ask the internets for help; it wasn't me being brilliant). My first thought was to apply an adjustment layer and then put a gradient across that layer's mask so that the blur varied in strength from one side of the image to the other. Then I noticed that there is no adjustment layer for blur (at least in the version of Photoshop I was using). Instead what you can do is duplicate the image layer and blur it all. Make the blur the maximum blur you want to see on the finished image. Make sure the blurred layer is on top and then add a mask layer to it and put a gradient across that. I've provided an example if you keep reading. I don't know whether you like the effect or not, but I grabbed a street scene from this <a href="http://altamiranyc.blogspot.com/2007/10/on-lafayette-and-kenmare.html">blog</a>.
+
+Untweaked it looks like <a href="http://www.snowbooks.com/weblog/StreetRaw.html" onclick="window.open('http://www.snowbooks.com/weblog/StreetRaw.html','popup','width=768,height=1024,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false">this</a>.
+Tweaked, it looks like <a href="http://www.snowbooks.com/weblog/StreetBlur.html" onclick="window.open('http://www.snowbooks.com/weblog/StreetBlur.html','popup','width=768,height=1024,scrollbars=no,resizable=no,toolbar=no,directories=no,location=no,menubar=no,status=no,left=0,top=0'); return false">this</a>.
+Once you've clicked on both links, hit backspace and then shift-backspace to flip between the versions.
+
+I used a gradient that goes from white to black to white again on the layer mask so as to lift the woman out of the background. It's pretty simple, you just need to play with your gradients and pick photos where distance from the lens tends to shift in some simple way across the photo. Have fun. <br/>Rob

@@ -1,0 +1,21 @@
+---
+layout: post
+title: Running XSL
+date: '2012-02-01T00:00:00+00:00'
+permalink: running-xsl
+---
+<div class="pic"><img src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/xml.jpg"/></div>
+
+Well, fancy that. I've found a new command-line way to transform massive XML files. No more java heap space exceptions! No more paying a mahoosive license fee for Oxygen XML just to transform XML! 
+
+This is for Mac only. Open the Terminal application. Change into the directory which contains both your XML and XSL files by entering the file path:
+
+cd path/to/your/folder
+
+You can use XSL to transform any sort of XML file. For instance, you might want to convert an ONIX file from its short-tag version to the long reference tag version. Run:
+
+xsltproc shorttolong.xsl short.XML -o long.xml
+
+That syntax is: call the command 'xsltproc'. (The libraries are built in to OSX, so you don't need to have installed anything to get this to work.) Give the name of the XSL file you want to use. Then give the name of the XML file you want to transform. Write -o, and then give the name you want the output file to have. 
+
+Simples and usefuls!  <br/>Emma

@@ -1,0 +1,25 @@
+---
+layout: post
+title: Save time, people. Automate!
+date: '2011-11-08T00:00:00+00:00'
+permalink: save-time-people-automate
+---
+<div class="pic"><img alt="CS55Boxes.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/CS55Boxes.jpg" width="290" height="136" /></div>
+
+Yesterday I (finally) wrote a script to turn an image of any size into one of the little thumbnails that you see next to SnowBlog posts. It's written in JavaScript and you call it from within Photoshop - in fact I gave it its own shortcut key. It instantly does something which normally takes me a minute or so to do manually. Not a big deal, but then I waste that minute every time I write a blog post. And worse still I know I'm wasting that minute as it happens. The script more or less instantly does the following:
+* Flattens any layers leaving the image and the background
+* Resizes the image to be 280 pixels wide, while maintaining its shape
+* Resizes the canvas so it's just a bit bigger than the image (we need room for a drop shadow)
+* Nudges the image out of the top-left corner (so we can select around its edge if we want)
+* Applies a pre-defined style to the image (you can't apply drop shadow and outer glow from the code)
+* Selects the area outside the image, feathers the selection and then removes it to give a soft edge
+It didn't take me long to write and would be much faster if I wrote a few similar scripts. I've also written scripts to automate my use of InDesign (although it's actually not me who does our typesetting). You write these things, drop them in the correct directory, and suddenly they're available to run from Photoshop or InDesign (or Illustrator or what-have-you). What I'm wondering is: if I showed you guys how to do that stuff would anyone be interested? Would anyone write their own scripts? I don't think it's difficult to write these things - fiddly, but not difficult - plus the standard is merely 'good enough' not 'commercial quality' - but then I'm maybe more used to programming than most publishers. Maybe you feel the same way about the prospect of writing a few lines of code as you would about learning quantum mechanics. I'm happy to share a bit of simple guidance and a worked example if there's some demand, but I can't really gauge if most people would get a kick out of automating and customising the tools they use or if that's more of a nerdy/Rob/just-me thing. Thoughts?
+<hr/>
+
+Also, while I'm on the subject, please check out Monday's XKCD: <a href="http://xkcd.com/974/">link</a>. (You hold your mouse pointer over the image for a bit more humour.)
+<hr/>
+
+Apologies to commenter Nathan, but if only one person out there is interested I might save my lengthy explanations of how to do this stuff. <span style="font-size: 70%;">Luddites</span>.
+<hr/>
+
+OK, so I cracked and wrote a tutorial. It's <a href="http://www.snowbooks.com/weblog/2011/11/scripting_tutorial.html">here</a>.  <br/>Rob

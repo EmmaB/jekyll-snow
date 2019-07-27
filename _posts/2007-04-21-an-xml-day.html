@@ -1,0 +1,31 @@
+---
+layout: post
+title: An XML day
+date: '2007-04-21T00:00:00+00:00'
+permalink: an-xml-day
+---
+<img alt="tired.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/tired.jpg" width="359" height="236" />
+
+I have been at this XML/InDesign problem <em>all day</em> - no breaks, not even for dinner which was on my lap - and I've only just cracked it, and I'm damned if I'm going to forget how I did it. So, as much for my benefit as yours, this is how to flow repeating XML data into InDesign automatically. Boo-yah! Nailed it! Oh yeah. OK, so. The XML we're using is ONIX, of course. The InDesign version is CS2. (If this changes in CS3, launched in a couple of days, I'm throwing this computer out of the window.) You will need to prepare two XML / ONIX files - one a single title record, the other the full data set.
+
+<strong>The set up: </strong>
+
+1) Open a new document in InDesign. 
+2) Import the single-record ONIX file by going to File/ Import XML and browsing. Don't bother ticking any import options. 
+3) Make sure the Structure pane on the left is visible and expand the ONIX message to Product level by clicking on the chevron thing. 
+4) Click and drag the T-box image next to ONIXMessage at the top of the tree onto the InDesign document. 
+5) Click anywhere on the text and hit ctrl-Y to edit in story editor. The full ONIX record should be there, all tagged up, with the first tag being Header. 
+6) Delete all the tags and content down to -product-. Don't delete -product-! 
+7) Go through and delete all the tags and records you don't want. Be very careful - you have to make sure the hierarchy remains intact so don't go deleting parent tags and leaving children content behind. Refer to the hierarchy on the Structure pane if you're in any doubt. 
+8) Make sure you don't delete the final -/product- tag. 
+9) Once you're done, close up any last white spaces and hit ctrl-Y to return to the normal view. 
+10) At this point you should create paragraph styles and map tags to styles. That's easy so I won't detail it here. 
+
+<strong>The data import:</strong>
+
+11) Now, select ONIXMessage again in the Structure pane and go to File / Import XML. Browse for your multi-title ONIX file. Make sure 'Show XML import options' is ticked (bottom left of the dialogue box). 
+12) Select Merge Content, and 'Clone repeating text elements', 'Only import elements that match', and 'Do not import contents of whitespace only elements'. 
+13) Use Autoflow to reveal any overset text. 
+14) And just like that you've got (if you now design and set up the paragraph styles for a single AI, or catalogue, or whatever) an updated, ONIX compliant document. Genius. 
+
+I seriously considered (for, like, half a second) charging money for this tutorial because it's taken me so long to figure out how to tag the placeholder text up with multiple-level tags. (If you're having trouble with this, it's because your tagged hierarchy is not the same as your XML hierarchy - follow the steps above and it will be fine.) But I am a nice person who subscribes to the principle of valuable things on the net being free - so take, enjoy, make use of and if this doesn't make sense or if you have no idea why this stuff is useful, you should<a href="mailto:emma@snowbooks.com"> email </a>me. It will save you about 12 months of your working life, no joke. <br/>Emma

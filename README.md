@@ -56,7 +56,6 @@ It will calculate the diff, update the changed files, upload the new files and d
 [x] more shop links
 [x] refine list on consonance of what should be published
 [x] set up aws
-[ ] search
 [x] schema.org
-[ ] blog
+[x] blog
 [x] home page copy
