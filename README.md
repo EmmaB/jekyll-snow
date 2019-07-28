@@ -36,26 +36,35 @@ To run the site locally:
 
 `jekyll serve`
 
-To push to production:
 
-* Build for production
+~~To push to production:~~
 
-`JEKYLL_ENV=production jekyll build`
+~~* Build for production~~
 
-Push to S3 AWS account emma+snow
+~~`JEKYLL_ENV=production jekyll build`~~
 
-We use `https://github.com/laurilehmijoki/s3_website`
+~~Push to S3 AWS account emma+snow~~
 
-`s3_website push`
+~~We use `https://github.com/laurilehmijoki/s3_website`~~
 
-It will calculate the diff, update the changed files, upload the new files and delete the obsolete files.
+~~`s3_website push`~~
+
+~~It will calculate the diff, update the changed files, upload the new files and delete the obsolete files.~~
+
+Now hosted on Netlify. Push master to git origin to deploy via an automatic pipeline. No need to build before pushing as Netlify uses deploy hooks to run `jekyll build`. 
 
 ## TODO
 
 [x] google analytics
+
 [x] more shop links
+
 [x] refine list on consonance of what should be published
+
 [x] set up aws
+
 [x] schema.org
+
 [x] blog
+
 [x] home page copy

@@ -2,7 +2,7 @@
 layout: post
 title: Website outage and DNS explained
 date: '2012-03-30T00:00:00+00:00'
-permalink: website-outage-and-dns-explained
+permalink: "/website-outage-and-dns-explained/"
 ---
 <div class="pic"><img alt="DomainNameSpace.jpg" src="https://s3-eu-west-1.amazonaws.com/bibliocloudimages/snowblog/DomainNameSpace.jpg" width="260" height="209" /></div>
 
@@ -38,4 +38,4 @@ And that brings us to where I screwed up Snowbooks' setup. I wanted to stop rout
 
 I waited the required 48 hours for the world's DNS servers to update their caches and (of course) found that our e-mail was still going to its old destination. So I complained to LCN. They looked into the matter and must have spotted that we were using someone else's nameserver not theirs. So in order to make my changes work they made their nameservers authoritative for our domain. But of course I hadn't created an 'A record' at LCN's servers - I assumed all that had been done long ago - I'd only created some 'MX records'. So once LCN's nameservers had become authoritative for our domain, all our e-mail used the new MX records, but there were no 'A records' to tell any web browsers where to find our website.
 
-The situation was resolved by adding the appropriate 'A record' to LCN's nameserver and that's how you're able to read this now. <br/>Rob
+The situation was resolved by adding the appropriate 'A record' to LCN's nameserver and that's how you're able to read this now. <br/><h4>Rob</h4>

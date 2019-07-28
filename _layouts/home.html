@@ -43,19 +43,9 @@
     {% include home_navigation.html %}
 		<div class="container">
 			{{ content }}
+		</div>
 		<footer>
-			<ul>
-				<li>
-					<a href="/contact/">Contact</a>
-				</li>
-				<li>
-					<a href="/about/">About</a>
-				</li>
-				<li>
-					<a href="http://twitter.com/snowbooks">Twitter</a>
-				</li>
-			</ul>
-			<p>Powered by Consonance</p>
+			{% include footer.html %}
 		</footer>
 	</body>
 </html>

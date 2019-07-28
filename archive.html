@@ -3,7 +3,7 @@ layout: default
 title: Archive
 permalink: /archive/
 ---
-<h1>Snowblog archives, going back to 2005</h1>
+<h1>Snowblog archives, <br/>going back to 2005</h1>
 <section>
   {% for post in site.posts %}
     {% assign currentDate = post.date | date: "%Y" %}
@@ -13,7 +13,7 @@ permalink: /archive/
       <ul>
       {% assign myDate = currentDate %}
     {% endif %}
-    <li><a href="{{ post.url }}"><span>{{ post.date | date: "%B %-d, %Y" }}</span> - {{ post.title }}</a></li>
+    <li class="archive"><a href="{{ post.url }}"><span>{{ post.date | date: "%B %-d, %Y" }}</span> - {{ post.title }}</a></li>
     {% if forloop.last %}</ul>{% endif %}
   {% endfor %}
 </section>
