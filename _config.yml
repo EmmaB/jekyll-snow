@@ -1,0 +1,79 @@
+title: Snowbooks
+url: "https://snowbooks.com"
+baseurl:
+google_analytics_key: UA-57644501-1
+google_maps_javascript_api_key:
+disqus_shortname:
+title_image: "http://snowbooks.com/images/home_img.jpg"
+
+# Default description in social shares for the jekyll-seo-tag gem
+description: Snowbooks - small publishers extraordinaire since 2003
+
+# Author details for the jekyll-seo-tag gem
+author:
+  name: Snowbooks
+  email: info@snowbooks.com
+  twitter: snowbooks
+
+# Social details for the jekyll-seo-tag gem
+social:
+  name: Snowbooks
+  links:
+    - https://twitter.com/snowbooks
+
+paginate: 10
+paginate_path: "/blog/:num/"
+permalink: pretty
+
+gems:
+  - "jekyll-feed"
+  - "jekyll-seo-tag"
+  - "jekyll-paginate"
+
+page_gen-dirs: true # uncomment, if you prefer to generate named folders
+page_gen:
+  - data: 'processed_books'
+    template: 'book_template'
+    name: 'title'
+    dir: 'books'
+
+defaults:
+  - scope:
+      path: "blog"
+      type: "posts"
+    values:
+      layout: "post"
+      _options:
+        content:
+          width: 960
+          height: 2000
+  - scope:
+      path: ""
+      type: "books"
+    values:
+      layout: "book"
+      _options:
+        image_path:
+          width: 2000
+          height: 2000
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: "index.html"
+      type: "pages"
+    values:
+      layout: "default"
+
+social_icons:
+  - Facebook
+  - Google Plus
+  - Instagram
+  - LinkedIn
+  - Pinterest
+  - Tumblr
+  - Twitter
+  - YouTube
+  - RSS

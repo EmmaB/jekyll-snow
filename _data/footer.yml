@@ -1,0 +1,28 @@
+- title: Pages
+  links:
+    - name: Home
+      link: /
+    - name: Books
+      link: /portfolio/
+    - name: About
+      link: /about/
+    - name: Contact
+      link: /contact/
+- title: Social
+  links:
+    - name: Facebook
+      link: https://www.facebook.com/snowbooksltd/
+      social_icon: Facebook
+      new_window: true
+    - name: Twitter
+      link: https://twitter.com/snowbooks
+      social_icon: Twitter
+      new_window: true
+    - name: LinkedIn
+      link: https://www.linkedin.com/in/emmabarnes/
+      social_icon: LinkedIn
+      new_window: true
+    - name: Instagram
+      link: https://www.instagram.com/snowbooks/
+      social_icon: Instagram
+      new_window: true
