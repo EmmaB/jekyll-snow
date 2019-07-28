@@ -53,6 +53,8 @@ To run the site locally:
 
 Now hosted on Netlify. Push master to git origin to deploy via an automatic pipeline. No need to build before pushing as Netlify uses deploy hooks to run `jekyll build`. 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f9528ec6-7dd5-467d-ac49-300a916e97cb/deploy-status)](https://app.netlify.com/sites/snowbooks/deploys)
+
 ## TODO
 
 [x] google analytics
