@@ -30,6 +30,8 @@ On the command line:
 
 `API_KEY=1234567890 ruby lib/seed.rb`
 
+If you happen to be Emma reading this, you can get that from querying the `ApiKey` table on production.
+
 `jekyll build --watch`
 
 To run the site locally:
@@ -51,7 +53,7 @@ To run the site locally:
 
 ~~It will calculate the diff, update the changed files, upload the new files and delete the obsolete files.~~
 
-Now hosted on Netlify. Push master to git origin to deploy via an automatic pipeline. No need to build before pushing as Netlify uses deploy hooks to run `jekyll build`. 
+Now hosted on Netlify. Push master to git origin to deploy via an automatic pipeline. No need to build before pushing as Netlify uses deploy hooks to run `jekyll build`.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f9528ec6-7dd5-467d-ac49-300a916e97cb/deploy-status)](https://app.netlify.com/sites/snowbooks/deploys)
 
