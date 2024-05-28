@@ -1,13 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '3.3.1'
+gem 'jekyll', "4.3.3"
 gem "lisbn"
 gem "byebug"
 gem "sanitize"
-gem "s3_website"
+# gem "s3_website"
+# gem "s3_website_revived"
+gem "kramdown-parser-gfm"
 group :jekyll_plugins do
-	gem 'jekyll-feed', '0.6.0'
-	gem 'jekyll-seo-tag', '2.0.0'
-	gem 'jekyll-paginate', '1.1.0'
-	gem 'jekyll-archives', '2.1.1'
+	gem 'jekyll-feed', "0.17.0"
+	gem 'jekyll-seo-tag'
+	gem 'jekyll-paginate'
+	gem 'jekyll-archives'
 end
